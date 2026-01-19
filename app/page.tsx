@@ -3,14 +3,14 @@ import {
   Conversation,
   ConversationContent,
   ConversationScrollButton,
-} from '../components/ai-elements/conversation';
+} from '@/components/ai-elements/conversation';
 import {
   Message,
   MessageContent,
   MessageResponse,
   MessageActions,
   MessageAction,
-} from '../components/ai-elements/message';
+} from '@/components/ai-elements/message';
 import {
   PromptInput,
   PromptInputActionAddAttachments,
@@ -23,47 +23,31 @@ import {
   PromptInputButton,
   PromptInputHeader,
   type PromptInputMessage,
+  PromptInputSelect,
+  PromptInputSelectContent,
+  PromptInputSelectItem,
+  PromptInputSelectTrigger,
+  PromptInputSelectValue,
   PromptInputSubmit,
   PromptInputTextarea,
   PromptInputFooter,
   PromptInputTools,
-  ModelSelector,
-  ModelSelectorTrigger,
-  ModelSelectorContent,
-  ModelSelectorInput,
-  ModelSelectorList,
-  ModelSelectorEmpty,
-  ModelSelectorGroup,
-  ModelSelectorItem,
-  ModelSelectorName,
-} from '../components/ai-elements/prompt-input';
-import { ModelSelectorDialog } from '../components/ai-elements/model-selector';
+} from '@/components/ai-elements/prompt-input';
 import { Fragment, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { CopyIcon, GlobeIcon, RefreshCcwIcon } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import {
-  Tool,
-  ToolContent,
-  ToolHeader,
-  ToolInput,
-  ToolOutput,
-} from '../components/ai-elements/tool';
-import { WeatherCard } from '../components/ai-elements/weather-card';
-import type { ToolUIPart } from 'ai';
-import { WeatherData } from '../lib/tools/weather-types';
 import {
   Source,
   Sources,
   SourcesContent,
   SourcesTrigger,
-} from '../components/ai-elements/sources';
+} from '@/components/ai-elements/sources';
 import {
   Reasoning,
   ReasoningContent,
   ReasoningTrigger,
-} from '../components/ai-elements/reasoning';
-import { Loader } from '../components/ai-elements/loader';
+} from '@/components/ai-elements/reasoning';
+import { Loader } from '@/components/ai-elements/loader';
 const models = [
   {
     name: 'GPT 4o',
@@ -168,42 +152,6 @@ const ChatBot = () => {
                         </Reasoning>
                       );
                     default:
-                      if (part.type?.startsWith('tool-')) {
-                        const toolPart = part as ToolUIPart;
-                        const isWeatherTool = toolPart.type === 'tool-getWeather';
-                        const isSuccess = toolPart.state === 'output-available';
-
-                        // If it's a successful weather tool, render the WeatherCard prominently
-                        if (isWeatherTool && isSuccess && toolPart.output) {
-                          const weatherData = toolPart.output as WeatherData;
-                          return (
-                            <div key={`${message.id}-${i}`} className="my-4">
-                              <WeatherCard
-                                location={weatherData.location}
-                                temperatureF={weatherData.temperatureF}
-                                condition={weatherData.condition}
-                                humidityPercent={weatherData.humidityPercent}
-                                windMph={weatherData.windMph}
-                              />
-                            </div>
-                          );
-                        }
-
-                        // Otherwise, render the tool debug info (collapsed by default in production)
-                        return (
-                          <Tool key={`${message.id}-${i}`} defaultOpen={false}>
-                            <ToolHeader type={toolPart.type} state={toolPart.state} />
-                            <ToolContent>
-                              {(toolPart.output || toolPart.errorText) && (
-                                <ToolOutput
-                                  output={toolPart.output}
-                                  errorText={toolPart.errorText}
-                                />
-                              )}
-                            </ToolContent>
-                          </Tool>
-                        );
-                      }
                       return null;
                   }
                 })}
@@ -240,30 +188,23 @@ const ChatBot = () => {
                 <GlobeIcon size={16} />
                 <span>Search</span>
               </PromptInputButton>
-              <ModelSelector>
-                <ModelSelectorTrigger asChild>
-                  <Button variant="ghost" className="justify-start">
-                    {models.find(m => m.value === model)?.name || 'Select Model'}
-                  </Button>
-                </ModelSelectorTrigger>
-                <ModelSelectorContent>
-                  <ModelSelectorInput placeholder="Search models..." />
-                  <ModelSelectorList>
-                    <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
-                    <ModelSelectorGroup>
-                      {models.map((modelOption) => (
-                        <ModelSelectorItem
-                          key={modelOption.value}
-                          value={modelOption.value}
-                          onSelect={() => setModel(modelOption.value)}
-                        >
-                          <ModelSelectorName>{modelOption.name}</ModelSelectorName>
-                        </ModelSelectorItem>
-                      ))}
-                    </ModelSelectorGroup>
-                  </ModelSelectorList>
-                </ModelSelectorContent>
-              </ModelSelector>
+              <PromptInputSelect
+                onValueChange={(value) => {
+                  setModel(value);
+                }}
+                value={model}
+              >
+                <PromptInputSelectTrigger>
+                  <PromptInputSelectValue />
+                </PromptInputSelectTrigger>
+                <PromptInputSelectContent>
+                  {models.map((model) => (
+                    <PromptInputSelectItem key={model.value} value={model.value}>
+                      {model.name}
+                    </PromptInputSelectItem>
+                  ))}
+                </PromptInputSelectContent>
+              </PromptInputSelect>
             </PromptInputTools>
             <PromptInputSubmit disabled={!input && !status} status={status} />
           </PromptInputFooter>
