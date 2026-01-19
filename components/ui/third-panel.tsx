@@ -9,12 +9,12 @@ const ThirdPanel = React.forwardRef<HTMLDivElement, ThirdPanelProps>(
       <div
         ref={ref}
         className={cn(
-          "flex items-center justify-center w-full h-screen bg-background border-l",
+          "flex items-center justify-center w-full h-full bg-background border-l transition-colors hover:bg-muted/50",
           className
         )}
         {...props}
       >
-        <div className="text-6xl">
+        <div className="text-6xl select-none" aria-hidden="true">
           🤡
         </div>
       </div>

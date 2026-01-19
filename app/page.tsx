@@ -36,9 +36,18 @@ import {
 import { Fragment, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { CopyIcon, GlobeIcon, RefreshCcwIcon } from 'lucide-react';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import { ThirdPanel } from '@/components/ui/third-panel';
+import { Separator } from '@/components/ui/separator';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import {
   ResizablePanelGroup,
   ResizablePanel,
@@ -93,11 +102,28 @@ const ChatBot = () => {
     setInput('');
   };
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <ResizablePanelGroup direction="horizontal" className="h-screen w-full">
-        <ResizablePanel defaultSize={50}>
-          <div className="flex flex-col h-full">
+    <SidebarProvider className="flex flex-col">
+      <div className="flex flex-1 h-screen">
+          <AppSidebar />
+          <SidebarInset>
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+              <SidebarTrigger className="-ml-1" />
+              <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="#">Chat</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>AI Assistant</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </header>
+            <ResizablePanelGroup direction="horizontal" className="h-full w-full">
+              <ResizablePanel defaultSize={50}>
+                <div className="flex flex-col h-full">
           <Conversation className="h-full">
           <ConversationContent>
             {messages.map((message) => (
@@ -117,6 +143,7 @@ const ChatBot = () => {
                           key={`${message.id}-${i}`}
                           href={part.url}
                           title={part.url}
+                          className="break-all"
                         />
                       </SourcesContent>
                     ))}
@@ -134,20 +161,20 @@ const ChatBot = () => {
                           </MessageContent>
                           {message.role === 'assistant' && i === messages.length - 1 && (
                             <MessageActions>
-                              <MessageAction
-                                onClick={() => regenerate()}
-                                label="Retry"
-                              >
-                                <RefreshCcwIcon className="size-3" />
-                              </MessageAction>
-                              <MessageAction
-                                onClick={() =>
-                                  navigator.clipboard.writeText(part.text)
-                                }
-                                label="Copy"
-                              >
-                                <CopyIcon className="size-3" />
-                              </MessageAction>
+                <MessageAction
+                  onClick={() => regenerate()}
+                  label="Retry"
+                >
+                  <RefreshCcwIcon className="size-3" aria-hidden="true" />
+                </MessageAction>
+                <MessageAction
+                  onClick={() =>
+                    navigator.clipboard.writeText(part.text)
+                  }
+                  label="Copy"
+                >
+                  <CopyIcon className="size-3" aria-hidden="true" />
+                </MessageAction>
                             </MessageActions>
                           )}
                         </Message>
@@ -169,7 +196,7 @@ const ChatBot = () => {
                 })}
               </div>
             ))}
-            {status === 'submitted' && <Loader />}
+            {status === 'submitted' && <Loader aria-label="Loading response…" />}
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
@@ -184,6 +211,9 @@ const ChatBot = () => {
               <PromptInputTextarea
                 onChange={(e) => setInput(e.target.value)}
                 value={input}
+                autoComplete="off"
+                spellCheck={false}
+                aria-label="Type your message here"
               />
             </PromptInputBody>
             <PromptInputFooter>
@@ -197,8 +227,10 @@ const ChatBot = () => {
                 <PromptInputButton
                   variant={webSearch ? 'default' : 'ghost'}
                   onClick={() => setWebSearch(!webSearch)}
+                  aria-label={webSearch ? 'Disable web search' : 'Enable web search'}
+                  aria-pressed={webSearch}
                 >
-                  <GlobeIcon size={16} />
+                  <GlobeIcon size={16} aria-hidden="true" />
                   <span>Search</span>
                 </PromptInputButton>
                 <PromptInputSelect
@@ -206,8 +238,9 @@ const ChatBot = () => {
                     setModel(value);
                   }}
                   value={model}
+                  aria-label="Select AI model"
                 >
-                  <PromptInputSelectTrigger>
+                  <PromptInputSelectTrigger aria-label="Current model selection">
                     <PromptInputSelectValue />
                   </PromptInputSelectTrigger>
                   <PromptInputSelectContent>
@@ -223,13 +256,15 @@ const ChatBot = () => {
           </PromptInputFooter>
         </PromptInput>
         </div>
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={50}>
-          <ThirdPanel />
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </SidebarProvider>
-  );
-};
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={50}>
+                  <ThirdPanel />
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </SidebarInset>
+          </div>
+        </SidebarProvider>
+    );
+  };
 export default ChatBot;
