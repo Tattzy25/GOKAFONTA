@@ -18,6 +18,30 @@ import { ChevronDownIcon } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
+const sanitizeUrl = (rawUrl: string): string | null => {
+  const trimmed = rawUrl.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  try {
+    // Use current origin as base for relative URLs when available
+    const base =
+      typeof window !== "undefined" && window.location?.origin
+        ? window.location.origin
+        : "https://example.com";
+    const parsed = new URL(trimmed, base);
+
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return parsed.toString();
+    }
+  } catch {
+    // Ignore parse errors and treat as invalid
+  }
+
+  return null;
+};
+
 export type WebPreviewContextValue = {
   url: string;
   setUrl: (url: string) => void;
@@ -148,7 +172,8 @@ export const WebPreviewUrl = ({
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       const target = event.target as HTMLInputElement;
-      setUrl(target.value);
+      const sanitized = sanitizeUrl(target.value);
+      setUrl(sanitized ?? "");
     }
     onKeyDown?.(event);
   };
@@ -177,12 +202,15 @@ export const WebPreviewBody = ({
 }: WebPreviewBodyProps) => {
   const { url } = useWebPreview();
 
+  const rawSrc = src ?? url;
+  const sanitizedSrc = rawSrc ? sanitizeUrl(rawSrc) ?? undefined : undefined;
+
   return (
     <div className="flex-1">
       <iframe
         className={cn("size-full", className)}
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
-        src={(src ?? url) || undefined}
+        src={sanitizedSrc}
         title="Preview"
         {...props}
       />
