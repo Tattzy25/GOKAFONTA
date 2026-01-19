@@ -31,7 +31,7 @@ import {
 } from '@/components/ai-elements/prompt-input';
 import { Fragment, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
-import { CopyIcon, GlobeIcon, RefreshCcwIcon } from 'lucide-react';
+import { CopyIcon, GlobeIcon, RefreshCcwIcon, ChevronDownIcon } from 'lucide-react';
 import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import { Button } from '@/components/ui/button';
@@ -64,6 +64,59 @@ import {
   WebPreviewUrl,
   WebPreviewBody,
 } from '@/components/ai-elements/web-preview';
+import {
+  Confirmation,
+  ConfirmationTitle,
+  ConfirmationRequest,
+  ConfirmationAccepted,
+  ConfirmationRejected,
+  ConfirmationActions,
+  ConfirmationAction,
+} from '@/components/ai-elements/confirmation';
+import {
+  Tool,
+  ToolHeader,
+  ToolContent,
+  ToolInput,
+  ToolOutput,
+} from '@/components/ai-elements/tool';
+import {
+  ChainOfThought,
+  ChainOfThoughtHeader,
+  ChainOfThoughtContent,
+  ChainOfThoughtStep,
+} from '@/components/ai-elements/chain-of-thought';
+import { Checkpoint } from '@/components/ai-elements/checkpoint';
+import {
+  Context,
+  ContextTrigger,
+  ContextContent,
+  ContextContentHeader,
+  ContextContentBody,
+  ContextContentFooter,
+  ContextInputUsage,
+  ContextOutputUsage,
+  ContextReasoningUsage,
+} from '@/components/ai-elements/context';
+import { Image } from '@/components/ai-elements/image';
+import { InlineCitation } from '@/components/ai-elements/inline-citation';
+import {
+  OpenIn,
+  OpenInTrigger,
+  OpenInContent,
+  OpenInLabel,
+  OpenInChatGPT,
+  OpenInClaude,
+  OpenInSeparator,
+  OpenInScira,
+  OpenInv0,
+  OpenInCursor,
+} from '@/components/ai-elements/open-in-chat';
+import { Plan } from '@/components/ai-elements/plan';
+import { Queue } from '@/components/ai-elements/queue';
+import { Shimmer } from '@/components/ai-elements/shimmer';
+import { Suggestion } from '@/components/ai-elements/suggestion';
+import { Task } from '@/components/ai-elements/task';
 import { Separator } from '@/components/ui/separator';
 import {
   Breadcrumb,
@@ -96,7 +149,7 @@ const ChatBot = () => {
   const [input, setInput] = useState('');
   const [model, setModel] = useState<string>(models[0].value);
   const [webSearch, setWebSearch] = useState(false);
-  const [artifactView, setArtifactView] = useState<'preview' | 'code'>('preview');
+  const [artifactView, setArtifactView] = useState<'preview' | 'code' | 'plan'>('preview');
   const { messages, sendMessage, status, regenerate } = useChat();
   const handleSubmit = (message: PromptInputMessage) => {
     const hasText = Boolean(message.text);
@@ -192,20 +245,60 @@ const ChatBot = () => {
                 >
                   <CopyIcon className="size-3" aria-hidden="true" />
                 </MessageAction>
+                <OpenIn query={part.text}>
+                  <OpenInTrigger />
+                  <OpenInContent>
+                    <OpenInLabel>Share this response</OpenInLabel>
+                    <OpenInChatGPT />
+                    <OpenInClaude />
+                    <OpenInSeparator />
+                    <OpenInScira />
+                    <OpenInv0 />
+                    <OpenInCursor />
+                  </OpenInContent>
+                </OpenIn>
                             </MessageActions>
                           )}
                         </Message>
                       );
                     case 'reasoning':
                       return (
-                        <Reasoning
-                          key={`${message.id}-${i}`}
-                          className="w-full"
-                          isStreaming={status === 'streaming' && i === message.parts.length - 1 && message.id === messages.at(-1)?.id}
-                        >
-                          <ReasoningTrigger />
-                          <ReasoningContent>{part.text}</ReasoningContent>
-                        </Reasoning>
+                        <ChainOfThought key={`${message.id}-${i}`}>
+                          <ChainOfThoughtHeader>
+                            Chain of Thought
+                          </ChainOfThoughtHeader>
+                          <ChainOfThoughtContent>
+                            <ChainOfThoughtStep label="Reasoning Process">
+                              {part.text}
+                            </ChainOfThoughtStep>
+                          </ChainOfThoughtContent>
+                        </ChainOfThought>
+                      );
+                    case 'tool-call':
+                      return (
+                        <Tool key={`${message.id}-${i}`}>
+                          <ToolHeader
+                            title={part.title || 'Tool Call'}
+                            type="tool-call"
+                            state="output-available"
+                          />
+                          <ToolContent>
+                            <ToolInput input={part.input} />
+                          </ToolContent>
+                        </Tool>
+                      );
+                    case 'tool-result':
+                      return (
+                        <Tool key={`${message.id}-${i}`}>
+                          <ToolHeader
+                            title={part.title || 'Tool Result'}
+                            type="tool-result"
+                            state="output-available"
+                          />
+                          <ToolContent>
+                            <ToolOutput output={part.output} errorText={part.errorText} />
+                          </ToolContent>
+                        </Tool>
                       );
                     default:
                       return null;
@@ -213,7 +306,7 @@ const ChatBot = () => {
                 })}
               </div>
             ))}
-            {status === 'submitted' && <Loader aria-label="Loading response…" />}
+            {status === 'submitted' && <Shimmer>Loading response…</Shimmer>}
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
@@ -252,26 +345,27 @@ const ChatBot = () => {
                 </PromptInputButton>
                 <ModelSelector>
                   <ModelSelectorTrigger asChild>
-                    <Button variant="outline" size="sm" className="justify-start">
+                    <Button variant="outline" size="lg" className="justify-start px-4 py-3 h-12 text-base">
                       {models.find(m => m.value === model)?.name || 'Select Model'}
                     </Button>
                   </ModelSelectorTrigger>
-                  <ModelSelectorContent>
-                    <ModelSelectorInput placeholder="Search models..." />
-                    <ModelSelectorList>
-                      <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
+                  <ModelSelectorContent className="w-96 p-0">
+                    <ModelSelectorInput placeholder="Search models..." className="h-14 px-4 text-base" />
+                    <ModelSelectorList className="max-h-96">
+                      <ModelSelectorEmpty className="py-8 text-center text-base">No models found.</ModelSelectorEmpty>
                       {models.map((modelItem) => (
                         <ModelSelectorItem
                           key={modelItem.value}
+                          value={modelItem.name}
                           onSelect={() => setModel(modelItem.value)}
-                          className="flex items-center gap-2"
+                          className="flex items-center justify-between px-4 py-4 hover:bg-accent cursor-pointer text-base"
                         >
-                          <ModelSelectorLogoGroup>
-                            {modelItem.providers.slice(0, 3).map((provider) => (
-                              <ModelSelectorLogo key={provider} provider={provider as "openai" | "anthropic" | "google" | "xai" | "mistral" | "deepseek" | "meta" | "vercel"} />
+                          <ModelSelectorName className="flex-1 text-left font-medium">{modelItem.name}</ModelSelectorName>
+                          <ModelSelectorLogoGroup className="flex-shrink-0 ml-4">
+                            {modelItem.providers.slice(0, 4).map((provider) => (
+                              <ModelSelectorLogo key={provider} provider={provider} className="size-5" />
                             ))}
                           </ModelSelectorLogoGroup>
-                          <ModelSelectorName>{modelItem.name}</ModelSelectorName>
                         </ModelSelectorItem>
                       ))}
                     </ModelSelectorList>
@@ -284,7 +378,24 @@ const ChatBot = () => {
         </div>
                 </ResizablePanel>
                 <ResizableHandle withHandle />
-                <ResizablePanel defaultSize={50}>
+                <ResizablePanel defaultSize={25}>
+                  <div className="h-full">
+                    <Context usedTokens={1500} maxTokens={8000}>
+                      <ContextTrigger />
+                      <ContextContent>
+                        <ContextContentHeader />
+                        <ContextContentBody>
+                          <ContextInputUsage />
+                          <ContextOutputUsage />
+                          <ContextReasoningUsage />
+                        </ContextContentBody>
+                        <ContextContentFooter />
+                      </ContextContent>
+                    </Context>
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={25}>
                   <div className="h-full flex flex-col">
                     <Artifact className="flex-1 m-4">
                       <ArtifactHeader>
@@ -304,6 +415,13 @@ const ChatBot = () => {
                           >
                             Code
                           </Button>
+                          <Button
+                            variant={artifactView === 'plan' ? 'default' : 'ghost'}
+                            size="sm"
+                            onClick={() => setArtifactView('plan')}
+                          >
+                            Plan
+                          </Button>
                           <ArtifactAction tooltip="Download HTML" icon={CopyIcon} />
                         </ArtifactActions>
                       </ArtifactHeader>
@@ -315,6 +433,15 @@ const ChatBot = () => {
                             </WebPreviewNavigation>
                             <WebPreviewBody className="flex-1" />
                           </WebPreview>
+                        ) : artifactView === 'plan' ? (
+                          <Plan className="h-full">
+                            <div className="p-4">
+                              <h3 className="font-medium text-sm mb-2">Planning Interface</h3>
+                              <p className="text-muted-foreground text-sm">
+                                AI planning and workflow management interface.
+                              </p>
+                            </div>
+                          </Plan>
                         ) : (
                           <CodeBlock
                             code=""

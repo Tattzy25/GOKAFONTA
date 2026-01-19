@@ -253,6 +253,7 @@ export const WebPreviewConsole = ({
               "h-4 w-4 transition-transform duration-200",
               consoleOpen && "rotate-180"
             )}
+            aria-hidden="true"
           />
         </Button>
       </CollapsibleTrigger>

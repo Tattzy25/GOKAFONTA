@@ -1,4 +1,4 @@
-export interface AIModel {
+ export interface AIModel {
   name: string;
   value: string;
   providers: string[];

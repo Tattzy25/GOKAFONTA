@@ -170,9 +170,10 @@ export const CodeBlockCopyButton = ({
       onClick={copyToClipboard}
       size="icon"
       variant="ghost"
+      aria-label={isCopied ? "Copied" : "Copy code"}
       {...props}
     >
-      {children ?? <Icon size={14} />}
+      {children ?? <Icon size={14} aria-hidden="true" />}
     </Button>
   );
 };

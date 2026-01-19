@@ -254,7 +254,7 @@ export const MessageBranchPrevious = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <ChevronLeftIcon size={14} />}
+      {children ?? <ChevronLeftIcon size={14} aria-hidden="true" />}
     </Button>
   );
 };
@@ -278,7 +278,7 @@ export const MessageBranchNext = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <ChevronRightIcon size={14} />}
+      {children ?? <ChevronRightIcon size={14} aria-hidden="true" />}
     </Button>
   );
 };
@@ -367,7 +367,7 @@ export function MessageAttachment({
               type="button"
               variant="ghost"
             >
-              <XIcon />
+              <XIcon aria-hidden="true" />
               <span className="sr-only">Remove</span>
             </Button>
           )}
@@ -377,7 +377,7 @@ export function MessageAttachment({
           <Tooltip>
             <TooltipTrigger asChild>
               <div className="flex size-full shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                <PaperclipIcon className="size-4" />
+                <PaperclipIcon className="size-4" aria-hidden="true" />
               </div>
             </TooltipTrigger>
             <TooltipContent>
@@ -395,7 +395,7 @@ export function MessageAttachment({
               type="button"
               variant="ghost"
             >
-              <XIcon />
+              <XIcon aria-hidden="true" />
               <span className="sr-only">Remove</span>
             </Button>
           )}
