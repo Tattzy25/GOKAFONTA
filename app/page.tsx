@@ -40,6 +40,12 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import { ThirdPanel } from '@/components/ui/third-panel';
 import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from '@/components/ui/resizable';
+
+import {
   Source,
   Sources,
   SourcesContent,
@@ -89,8 +95,9 @@ const ChatBot = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="flex flex-row h-screen w-full">
-        <div className="flex flex-col flex-1 h-screen">
+      <ResizablePanelGroup direction="horizontal" className="h-screen w-full">
+        <ResizablePanel defaultSize={50}>
+          <div className="flex flex-col h-full">
           <Conversation className="h-full">
           <ConversationContent>
             {messages.map((message) => (
@@ -216,8 +223,12 @@ const ChatBot = () => {
           </PromptInputFooter>
         </PromptInput>
         </div>
-        <ThirdPanel className="flex-1" />
-      </div>
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={50}>
+          <ThirdPanel />
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </SidebarProvider>
   );
 };
