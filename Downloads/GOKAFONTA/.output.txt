@@ -1,0 +1,1154 @@
+
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                .github
+d-----          2/7/2026   8:00 AM                .next
+d-----          2/7/2026   8:05 AM                .vercel
+d-----          2/7/2026   7:55 AM                app
+d-----          2/7/2026   7:55 AM                components
+d-----          2/7/2026   7:55 AM                hooks
+d-----          2/7/2026   7:55 AM                lib
+d-----          2/7/2026   7:56 AM                node_modules
+d-----          2/7/2026   8:01 AM                public
+-a----          2/7/2026   7:55 AM            776 .gitignore
+-a----          2/7/2026   7:55 AM            469 components.json
+-a----          2/7/2026   7:55 AM            483 eslint.config.mjs
+-a----          2/7/2026   8:00 AM            257 next-env.d.ts
+-a----          2/7/2026   7:55 AM            196 next.config.ts
+-a----          2/7/2026   7:55 AM           2571 package.json
+-a----          2/7/2026   7:55 AM         240685 pnpm-lock.yaml
+-a----          2/7/2026   7:55 AM            101 postcss.config.mjs
+-a----          2/7/2026   7:55 AM         979021 qodana.sarif.json
+-a----          2/7/2026   7:55 AM           1802 qodana.yaml
+-a----          2/7/2026   7:55 AM           2123 README.md
+-a----          2/7/2026   7:55 AM            640 SECURITY.md
+-a----          2/7/2026   7:55 AM            745 tsconfig.json
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.github
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                workflows
+-a----          2/7/2026   7:55 AM           2009 copilot-instructions.md
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.github\workflows
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:55 AM           1311 qodana_code_quality.yml
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:56 AM                build
+d-----          2/7/2026   7:56 AM                cache
+d-----          2/7/2026   8:00 AM                dev
+d-----          2/7/2026   7:56 AM                diagnostics
+d-----          2/7/2026   7:56 AM                server
+d-----          2/7/2026   7:56 AM                static
+d-----          2/7/2026   7:56 AM                types
+-a----          2/7/2026   7:56 AM            174 app-path-routes-manifest.json
+-a----          2/7/2026   7:56 AM            494 build-manifest.json
+-a----          2/7/2026   7:56 AM             21 BUILD_ID
+-a----          2/7/2026   7:56 AM            111 export-marker.json
+-a----          2/7/2026   7:56 AM            234 fallback-build-manifest.json
+-a----          2/7/2026   7:56 AM           1123 images-manifest.json
+-a----          2/7/2026   7:56 AM          11872 next-minimal-server.js.nft.js
+                                                  on
+-a----          2/7/2026   7:56 AM          86858 next-server.js.nft.json
+-a----          2/7/2026   7:56 AM             20 package.json
+-a----          2/7/2026   7:56 AM           3176 prerender-manifest.json
+-a----          2/7/2026   7:56 AM           8772 required-server-files.json
+-a----          2/7/2026   7:56 AM           1860 routes-manifest.json
+-a----          2/7/2026   7:56 AM           6092 trace
+-a----          2/7/2026   7:56 AM           1034 trace-build
+-a----          2/7/2026   7:56 AM              0 turbopack
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\build
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:56 AM                chunks
+-a----          2/7/2026   7:56 AM             20 package.json
+-a----          2/7/2026   7:56 AM            861 postcss.js
+-a----          2/7/2026   7:56 AM             53 postcss.js.map
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\cache
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:56 AM            262 .previewinfo
+-a----          2/7/2026   7:56 AM            102 .rscinfo
+-a----          2/7/2026   7:56 AM         149988 .tsbuildinfo
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\dev
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   8:00 AM                build
+d-----          2/7/2026   8:00 AM                cache
+d-----          2/7/2026   8:00 AM                logs
+d-----          2/7/2026   8:00 AM                server
+d-----          2/7/2026   8:00 AM                static
+d-----          2/7/2026   8:00 AM                types
+-a----          2/7/2026   8:00 AM            920 build-manifest.json
+-a----          2/7/2026   8:00 AM            214 fallback-build-manifest.json
+-a----          2/7/2026   8:00 AM              0 lock
+-a----          2/7/2026   8:00 AM             24 package.json
+-a----          2/7/2026   8:00 AM            354 prerender-manifest.json
+-a----          2/7/2026   8:00 AM            288 routes-manifest.json
+-a----          2/7/2026   8:00 AM              0 trace
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\diagnostics
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:56 AM             93 build-diagnostics.json
+-a----          2/7/2026   7:56 AM             38 framework.json
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\server
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:56 AM                app
+d-----          2/7/2026   7:56 AM                chunks
+d-----          2/7/2026   7:56 AM                pages
+-a----          2/7/2026   7:56 AM            230 app-paths-manifest.json
+-a----          2/7/2026   7:56 AM             37 functions-config-manifest.jso
+                                                  n
+-a----          2/7/2026   7:56 AM             48 interception-route-rewrite-ma
+                                                  nifest.js
+-a----          2/7/2026   7:56 AM            596 middleware-build-manifest.js
+-a----          2/7/2026   7:56 AM             83 middleware-manifest.json
+-a----          2/7/2026   7:56 AM            346 next-font-manifest.js
+-a----          2/7/2026   7:56 AM            290 next-font-manifest.json
+-a----          2/7/2026   7:56 AM             58 pages-manifest.json
+-a----          2/7/2026   7:56 AM            581 server-reference-manifest.js
+-a----          2/7/2026   7:56 AM            492 server-reference-manifest.jso
+                                                  n
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\static
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:56 AM                BvU7KNVhaV5KTeTtKXluZ
+d-----          2/7/2026   7:56 AM                chunks
+d-----          2/7/2026   7:56 AM                media
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.next\types
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:56 AM           1928 routes.d.ts
+-a----          2/7/2026   7:56 AM           3432 validator.ts
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\.vercel
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   8:05 AM            114 project.json
+-a----          2/7/2026   8:05 AM            520 README.txt
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\app
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                api
+-a----          2/7/2026   7:55 AM           1661 actions.ts
+-a----          2/7/2026   7:55 AM           6495 globals.css
+-a----          2/7/2026   7:55 AM         368957 icon.png
+-a----          2/7/2026   7:55 AM           1440 layout.tsx
+-a----          2/7/2026   7:55 AM          18621 page.tsx
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\app\api
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                download
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\components
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                ui
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\components\ui
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:55 AM           2280 button.tsx
+-a----          2/7/2026   7:55 AM           2079 card.tsx
+-a----          2/7/2026   7:55 AM           3971 dialog.tsx
+-a----          2/7/2026   7:55 AM           5235 input-group.tsx
+-a----          2/7/2026   7:55 AM            983 input.tsx
+-a----          2/7/2026   7:55 AM            635 label.tsx
+-a----          2/7/2026   7:55 AM           1683 popover.tsx
+-a----          2/7/2026   7:55 AM           6548 select.tsx
+-a----          2/7/2026   7:55 AM            727 separator.tsx
+-a----          2/7/2026   7:55 AM           2059 slider.tsx
+-a----          2/7/2026   7:55 AM           1074 sonner.tsx
+-a----          2/7/2026   7:55 AM           1208 switch.tsx
+-a----          2/7/2026   7:55 AM            777 textarea.tsx
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\hooks
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:55 AM            584 use-mobile.ts
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\lib
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:55 AM            221 models.ts
+-a----          2/7/2026   7:55 AM            850 payload.ts
+-a----          2/7/2026   7:55 AM           2645 settings.ts
+-a----          2/7/2026   7:55 AM            433 types.ts
+-a----          2/7/2026   7:55 AM            172 utils.ts
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:56 AM                .bin
+d-----          2/7/2026   7:56 AM                .pnpm
+d-----          2/7/2026   7:56 AM                @hookform
+d-----          2/7/2026   7:56 AM                @radix-ui
+d-----          2/7/2026   7:56 AM                @tailwindcss
+d-----          2/7/2026   7:56 AM                @types
+d-----          2/7/2026   7:56 AM                @vercel
+d----l          2/7/2026   7:56 AM                class-variance-authority
+d----l          2/7/2026   7:56 AM                clsx
+d----l          2/7/2026   7:56 AM                cmdk
+d----l          2/7/2026   7:56 AM                date-fns
+d----l          2/7/2026   7:56 AM                embla-carousel-react
+d----l          2/7/2026   7:56 AM                eslint
+d----l          2/7/2026   7:56 AM                eslint-config-next
+d----l          2/7/2026   7:56 AM                input-otp
+d----l          2/7/2026   7:56 AM                jszip
+d----l          2/7/2026   7:56 AM                lucide-react
+d----l          2/7/2026   7:56 AM                next
+d----l          2/7/2026   7:56 AM                next-themes
+d----l          2/7/2026   7:56 AM                react
+d----l          2/7/2026   7:56 AM                react-day-picker
+d----l          2/7/2026   7:56 AM                react-dom
+d----l          2/7/2026   7:56 AM                react-hook-form
+d----l          2/7/2026   7:56 AM                react-resizable-panels
+d----l          2/7/2026   7:56 AM                recharts
+d----l          2/7/2026   7:56 AM                replicate
+d----l          2/7/2026   7:56 AM                sonner
+d----l          2/7/2026   7:56 AM                tailwind-merge
+d----l          2/7/2026   7:56 AM                tailwindcss
+d----l          2/7/2026   7:56 AM                tw-animate-css
+d----l          2/7/2026   7:56 AM                typescript
+d----l          2/7/2026   7:56 AM                vaul
+d----l          2/7/2026   7:56 AM                yet-another-react-lightbox
+d----l          2/7/2026   7:56 AM                zod
+-a----          2/7/2026   7:56 AM          30448 .modules.yaml
+-a----          2/7/2026   7:56 AM            607 .pnpm-workspace-state-v1.json
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\.bin
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/7/2026   7:56 AM           1324 eslint
+-a----          2/7/2026   7:56 AM           1096 eslint.CMD
+-a----          2/7/2026   7:56 AM           1915 eslint.ps1
+-a----          2/7/2026   7:56 AM           1858 next
+-a----          2/7/2026   7:56 AM           1622 next.CMD
+-a----          2/7/2026   7:56 AM           2441 next.ps1
+-a----          2/7/2026   7:56 AM           1288 tsc
+-a----          2/7/2026   7:56 AM           1060 tsc.CMD
+-a----          2/7/2026   7:56 AM           1875 tsc.ps1
+-a----          2/7/2026   7:56 AM           1298 tsserver
+-a----          2/7/2026   7:56 AM           1070 tsserver.CMD
+-a----          2/7/2026   7:56 AM           1895 tsserver.ps1
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\.pnpm
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:55 AM                @alloc+quick-lru@5.2.0
+d-----          2/7/2026   7:55 AM                @babel+code-frame@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+compat-data@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+core@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+generator@7.29.1
+d-----          2/7/2026   7:55 AM                @babel+helper-compilation-tar
+                                                  gets@7.28.6
+d-----          2/7/2026   7:55 AM                @babel+helper-globals@7.28.0
+d-----          2/7/2026   7:55 AM                @babel+helper-module-imports@
+                                                  7.28.6
+d-----          2/7/2026   7:55 AM                @babel+helper-module-transfor
+                                                  ms@7.28.6_@babel+core@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+helper-string-parser@7
+                                                  .27.1
+d-----          2/7/2026   7:55 AM                @babel+helper-validator-ident
+                                                  ifier@7.28.5
+d-----          2/7/2026   7:55 AM                @babel+helper-validator-optio
+                                                  n@7.27.1
+d-----          2/7/2026   7:55 AM                @babel+helpers@7.28.6
+d-----          2/7/2026   7:55 AM                @babel+parser@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+runtime@7.28.6
+d-----          2/7/2026   7:55 AM                @babel+template@7.28.6
+d-----          2/7/2026   7:55 AM                @babel+traverse@7.29.0
+d-----          2/7/2026   7:55 AM                @babel+types@7.29.0
+d-----          2/7/2026   7:55 AM                @date-fns+tz@1.4.1
+d-----          2/7/2026   7:55 AM                @eslint+config-array@0.21.1
+d-----          2/7/2026   7:55 AM                @eslint+config-helpers@0.4.2
+d-----          2/7/2026   7:55 AM                @eslint+core@0.17.0
+d-----          2/7/2026   7:55 AM                @eslint+eslintrc@3.3.3
+d-----          2/7/2026   7:55 AM                @eslint+js@9.39.2
+d-----          2/7/2026   7:55 AM                @eslint+object-schema@2.1.7
+d-----          2/7/2026   7:55 AM                @eslint+plugin-kit@0.4.1
+d-----          2/7/2026   7:55 AM                @eslint-community+eslint-ut_8
+                                                  1d349e9ce13e943a6deaf0c729486
+                                                  a8
+d-----          2/7/2026   7:55 AM                @eslint-community+regexpp@4.1
+                                                  2.2
+d-----          2/7/2026   7:55 AM                @floating-ui+core@1.7.4
+d-----          2/7/2026   7:55 AM                @floating-ui+dom@1.7.5
+d-----          2/7/2026   7:55 AM                @floating-ui+react-dom@2.1._4
+                                                  7142b4944aab18bec9a21a6294061
+                                                  2c
+d-----          2/7/2026   7:55 AM                @floating-ui+utils@0.2.10
+d-----          2/7/2026   7:55 AM                @hookform+resolvers@5.2.2_r_3
+                                                  5a4f207728bc4d8eceba918a09774
+                                                  d8
+d-----          2/7/2026   7:55 AM                @humanfs+core@0.19.1
+d-----          2/7/2026   7:55 AM                @humanfs+node@0.16.7
+d-----          2/7/2026   7:55 AM                @humanwhocodes+module-importe
+                                                  r@1.0.1
+d-----          2/7/2026   7:55 AM                @humanwhocodes+retry@0.4.3
+d-----          2/7/2026   7:55 AM                @img+colour@1.0.0
+d-----          2/7/2026   7:55 AM                @img+sharp-win32-x64@0.34.5
+d-----          2/7/2026   7:55 AM                @jridgewell+gen-mapping@0.3.1
+                                                  3
+d-----          2/7/2026   7:55 AM                @jridgewell+remapping@2.3.5
+d-----          2/7/2026   7:55 AM                @jridgewell+resolve-uri@3.1.2
+d-----          2/7/2026   7:55 AM                @jridgewell+sourcemap-codec@1
+                                                  .5.5
+d-----          2/7/2026   7:55 AM                @jridgewell+trace-mapping@0.3
+                                                  .31
+d-----          2/7/2026   7:55 AM                @next+env@16.0.10
+d-----          2/7/2026   7:55 AM                @next+eslint-plugin-next@16.0
+                                                  .10
+d-----          2/7/2026   7:55 AM                @next+swc-win32-x64-msvc@16.0
+                                                  .10
+d-----          2/7/2026   7:55 AM                @nodelib+fs.scandir@2.1.5
+d-----          2/7/2026   7:55 AM                @nodelib+fs.stat@2.0.5
+d-----          2/7/2026   7:55 AM                @nodelib+fs.walk@1.2.8
+d-----          2/7/2026   7:55 AM                @nolyfill+is-core-module@1.0.
+                                                  39
+d-----          2/7/2026   7:55 AM                @radix-ui+number@1.1.1
+d-----          2/7/2026   7:55 AM                @radix-ui+primitive@1.1.3
+d-----          2/7/2026   7:55 AM                @radix-ui+react-accordion@1_d
+                                                  46290fe81b61d90fd86595cbf39c2
+                                                  6a
+d-----          2/7/2026   7:55 AM                @radix-ui+react-alert-dialo_7
+                                                  bf3e94ebffaeb6e138fc6d91f0ffe
+                                                  10
+d-----          2/7/2026   7:55 AM                @radix-ui+react-arrow@1.1.7_d
+                                                  4e913c7578d1c02216a3ca652dfa4
+                                                  46
+d-----          2/7/2026   7:55 AM                @radix-ui+react-aspect-rati_1
+                                                  46a5d9dddf7dd18a1fe9975b4fff4
+                                                  bf
+d-----          2/7/2026   7:55 AM                @radix-ui+react-avatar@1.1._7
+                                                  93cedc92d39e11ee51d440ce536e7
+                                                  d3
+d-----          2/7/2026   7:55 AM                @radix-ui+react-checkbox@1._c
+                                                  c560c93266392f76beb36191017a0
+                                                  60
+d-----          2/7/2026   7:55 AM                @radix-ui+react-collapsible_e
+                                                  b5f6fe08351fb856601c64cb3792a
+                                                  61
+d-----          2/7/2026   7:55 AM                @radix-ui+react-collection@_a
+                                                  6b48bbaf200db4e37dfceb1b1a71b
+                                                  26
+d-----          2/7/2026   7:55 AM                @radix-ui+react-compose-ref_9
+                                                  033556141895a389a80965642d7cf
+                                                  db
+d-----          2/7/2026   7:55 AM                @radix-ui+react-context-men_a
+                                                  619ab6c72e0fc7ddea38071ea1984
+                                                  a5
+d-----          2/7/2026   7:55 AM                @radix-ui+react-context@1.1_3
+                                                  2567ff8f5115c7b84a5d7d01f359b
+                                                  d5
+d-----          2/7/2026   7:55 AM                @radix-ui+react-context@1.1_9
+                                                  c45c2a9c9abd16d0d14d2d736f84a
+                                                  c4
+d-----          2/7/2026   7:55 AM                @radix-ui+react-dialog@1.1._3
+                                                  486c254c77c3d320a4b30e83d0a36
+                                                  8a
+d-----          2/7/2026   7:55 AM                @radix-ui+react-direction@1_4
+                                                  2a3a8d626be47a62a00f06f7d47ef
+                                                  83
+d-----          2/7/2026   7:55 AM                @radix-ui+react-dismissable_3
+                                                  dd980d200d4bd2ca40ad5f57008f5
+                                                  33
+d-----          2/7/2026   7:55 AM                @radix-ui+react-dropdown-me_f
+                                                  0d96425ddd18cdb8e8d55d3173f26
+                                                  a7
+d-----          2/7/2026   7:55 AM                @radix-ui+react-focus-guard_c
+                                                  f65aad4b77ae9cc5146344fcfabea
+                                                  a1
+d-----          2/7/2026   7:55 AM                @radix-ui+react-focus-scope_c
+                                                  81d73c5ada992744b5f840b753d91
+                                                  81
+d-----          2/7/2026   7:55 AM                @radix-ui+react-hover-card@_a
+                                                  48508f0803240102f0002f7c85d5e
+                                                  54
+d-----          2/7/2026   7:55 AM                @radix-ui+react-id@1.1.1_@typ
+                                                  es+react@19.2.13_react@19.2.1
+d-----          2/7/2026   7:55 AM                @radix-ui+react-label@2.1.8_0
+                                                  54a11b94b5e900f164330dfc845ee
+                                                  70
+d-----          2/7/2026   7:55 AM                @radix-ui+react-menu@2.1.16_6
+                                                  a12662f3c43980f1dcc94912994d2
+                                                  9a
+d-----          2/7/2026   7:55 AM                @radix-ui+react-menubar@1.1_6
+                                                  ea668a1adc740acc6917e329f4205
+                                                  61
+d-----          2/7/2026   7:55 AM                @radix-ui+react-navigation-_a
+                                                  54cc16b76a91437d4bc41a0717e26
+                                                  8c
+d-----          2/7/2026   7:55 AM                @radix-ui+react-popover@1.1_2
+                                                  8a2f4ce8b4391788c9d1508bbbec8
+                                                  f8
+d-----          2/7/2026   7:55 AM                @radix-ui+react-popper@1.2._0
+                                                  55ecc6931af5b495e72e3cd166a77
+                                                  aa
+d-----          2/7/2026   7:55 AM                @radix-ui+react-portal@1.1._5
+                                                  1bb9dee99be0e8c5cdf6149ca0963
+                                                  5e
+d-----          2/7/2026   7:55 AM                @radix-ui+react-presence@1._5
+                                                  b9a82d0030c9c57a499461718198b
+                                                  09
+d-----          2/7/2026   7:55 AM                @radix-ui+react-primitive@2_e
+                                                  412199c3e6ec5b4639cd81eb0e28d
+                                                  45
+d-----          2/7/2026   7:55 AM                @radix-ui+react-primitive@2_f
+                                                  4939baaa69492d2838edd297fbd85
+                                                  99
+d-----          2/7/2026   7:55 AM                @radix-ui+react-progress@1._a
+                                                  b3252665c19b63ec56baa2c5b276c
+                                                  24
+d-----          2/7/2026   7:55 AM                @radix-ui+react-radio-group_3
+                                                  64018674e314785da54c98f3a6695
+                                                  52
+d-----          2/7/2026   7:55 AM                @radix-ui+react-roving-focu_5
+                                                  ca3b81d8c0e2f5e7d153aefe77ba4
+                                                  a1
+d-----          2/7/2026   7:55 AM                @radix-ui+react-scroll-area_9
+                                                  f8ad879e14762c101e92d3961780a
+                                                  c8
+d-----          2/7/2026   7:55 AM                @radix-ui+react-select@2.2._3
+                                                  fd34facb978ff348da3a5bb11f06d
+                                                  35
+d-----          2/7/2026   7:55 AM                @radix-ui+react-separator@1_0
+                                                  8ed1f1936bbcbb84191c74244fc61
+                                                  08
+d-----          2/7/2026   7:55 AM                @radix-ui+react-slider@1.3._9
+                                                  f0aee66f35a5f7d884264b9d8dc50
+                                                  73
+d-----          2/7/2026   7:55 AM                @radix-ui+react-slot@1.2.3_@t
+                                                  ypes+react@19.2.13_react@19.2
+                                                  .1
+d-----          2/7/2026   7:55 AM                @radix-ui+react-slot@1.2.4_@t
+                                                  ypes+react@19.2.13_react@19.2
+                                                  .1
+d-----          2/7/2026   7:55 AM                @radix-ui+react-switch@1.2._e
+                                                  a1bf1158cf572882b4fb02fb7c0c9
+                                                  d5
+d-----          2/7/2026   7:55 AM                @radix-ui+react-tabs@1.1.13_6
+                                                  b753f18bc779cdf1d334e65f81583
+                                                  b7
+d-----          2/7/2026   7:55 AM                @radix-ui+react-toggle-grou_c
+                                                  306c2006b8d8712af9e2e4cb1ebb1
+                                                  1a
+d-----          2/7/2026   7:55 AM                @radix-ui+react-toggle@1.1._9
+                                                  cc9106e13c168bb1a5fa0a12623ab
+                                                  32
+d-----          2/7/2026   7:55 AM                @radix-ui+react-tooltip@1.2_9
+                                                  b134e832509946271ba2e56cdbc76
+                                                  0e
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-callbac_0
+                                                  15f92823cb9aaf3b0c9851fc04c9a
+                                                  bb
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-control_6
+                                                  dcc0b1b6abf524c1011cc47b329c1
+                                                  28
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-effect-_b
+                                                  41f776a47515ec91c2369f8bb8939
+                                                  65
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-escape-_f
+                                                  36abd873f7f381d0902e98e2c4a74
+                                                  b3
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-is-hydr_b
+                                                  cbd918ca4d206916cd445c12d69a2
+                                                  6c
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-layout-_c
+                                                  b8bc9e77d83ec93fb6803ce0a1fcb
+                                                  e4
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-previou_4
+                                                  c4aebe58e9e87460d477930d91021
+                                                  f4
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-rect@1._3
+                                                  dfba1fabc861a34e27614f2d6daae
+                                                  1c
+d-----          2/7/2026   7:55 AM                @radix-ui+react-use-size@1._0
+                                                  9a1828472208e97637c3baee44d90
+                                                  70
+d-----          2/7/2026   7:55 AM                @radix-ui+react-visually-hi_9
+                                                  584c177228e46946501b435fad4f7
+                                                  52
+d-----          2/7/2026   7:55 AM                @radix-ui+rect@1.1.1
+d-----          2/7/2026   7:55 AM                @rtsao+scc@1.1.0
+d-----          2/7/2026   7:55 AM                @standard-schema+utils@0.3.0
+d-----          2/7/2026   7:55 AM                @swc+helpers@0.5.15
+d-----          2/7/2026   7:55 AM                @tailwindcss+node@4.1.18
+d-----          2/7/2026   7:55 AM                @tailwindcss+oxide-win32-x64-
+                                                  msvc@4.1.18
+d-----          2/7/2026   7:55 AM                @tailwindcss+oxide@4.1.18
+d-----          2/7/2026   7:55 AM                @tailwindcss+postcss@4.1.18
+d-----          2/7/2026   7:55 AM                @types+d3-array@3.2.2
+d-----          2/7/2026   7:55 AM                @types+d3-color@3.1.3
+d-----          2/7/2026   7:55 AM                @types+d3-ease@3.0.2
+d-----          2/7/2026   7:55 AM                @types+d3-interpolate@3.0.4
+d-----          2/7/2026   7:55 AM                @types+d3-path@3.1.1
+d-----          2/7/2026   7:55 AM                @types+d3-scale@4.0.9
+d-----          2/7/2026   7:55 AM                @types+d3-shape@3.1.8
+d-----          2/7/2026   7:55 AM                @types+d3-time@3.0.4
+d-----          2/7/2026   7:55 AM                @types+d3-timer@3.0.2
+d-----          2/7/2026   7:55 AM                @types+estree@1.0.8
+d-----          2/7/2026   7:55 AM                @types+json-schema@7.0.15
+d-----          2/7/2026   7:55 AM                @types+json5@0.0.29
+d-----          2/7/2026   7:55 AM                @types+node@20.19.32
+d-----          2/7/2026   7:55 AM                @types+react-dom@19.2.3_@type
+                                                  s+react@19.2.13
+d-----          2/7/2026   7:55 AM                @types+react@19.2.13
+d-----          2/7/2026   7:55 AM                @typescript-eslint+eslint-p_0
+                                                  5c1f1952b9615f0220243e555b6dc
+                                                  47
+d-----          2/7/2026   7:55 AM                @typescript-eslint+parser@8_c
+                                                  15788d741b14921aa19bb248f6549
+                                                  af
+d-----          2/7/2026   7:55 AM                @typescript-eslint+project-se
+                                                  rvice@8.54.0_typescript@5.9.3
+d-----          2/7/2026   7:55 AM                @typescript-eslint+scope-mana
+                                                  ger@8.54.0
+d-----          2/7/2026   7:55 AM                @typescript-eslint+tsconfig-u
+                                                  tils@8.54.0_typescript@5.9.3
+d-----          2/7/2026   7:55 AM                @typescript-eslint+type-uti_5
+                                                  c1468a79e5e6a1e337e57987bf4f9
+                                                  46
+d-----          2/7/2026   7:55 AM                @typescript-eslint+types@8.54
+                                                  .0
+d-----          2/7/2026   7:55 AM                @typescript-eslint+typescript
+                                                  -estree@8.54.0_typescript@5.9
+                                                  .3
+d-----          2/7/2026   7:55 AM                @typescript-eslint+utils@8._b
+                                                  b73b7fa0a3db09592b3f841b11c37
+                                                  4a
+d-----          2/7/2026   7:55 AM                @typescript-eslint+visitor-ke
+                                                  ys@8.54.0
+d-----          2/7/2026   7:55 AM                @unrs+resolver-binding-win32-
+                                                  x64-msvc@1.11.1
+d-----          2/7/2026   7:55 AM                @vercel+analytics@1.6.1_nex_1
+                                                  f3d944a19422b87707f0b9efe8e19
+                                                  6c
+d-----          2/7/2026   7:55 AM                abort-controller@3.0.0
+d-----          2/7/2026   7:55 AM                acorn-jsx@5.3.2_acorn@8.15.0
+d-----          2/7/2026   7:55 AM                acorn@8.15.0
+d-----          2/7/2026   7:55 AM                ajv@6.12.6
+d-----          2/7/2026   7:55 AM                ansi-styles@4.3.0
+d-----          2/7/2026   7:55 AM                argparse@2.0.1
+d-----          2/7/2026   7:55 AM                aria-hidden@1.2.6
+d-----          2/7/2026   7:55 AM                aria-query@5.3.2
+d-----          2/7/2026   7:55 AM                array-buffer-byte-length@1.0.
+                                                  2
+d-----          2/7/2026   7:55 AM                array-includes@3.1.9
+d-----          2/7/2026   7:55 AM                array.prototype.findlast@1.2.
+                                                  5
+d-----          2/7/2026   7:55 AM                array.prototype.findlastindex
+                                                  @1.2.6
+d-----          2/7/2026   7:55 AM                array.prototype.flat@1.3.3
+d-----          2/7/2026   7:55 AM                array.prototype.flatmap@1.3.3
+d-----          2/7/2026   7:55 AM                array.prototype.tosorted@1.1.
+                                                  4
+d-----          2/7/2026   7:55 AM                arraybuffer.prototype.slice@1
+                                                  .0.4
+d-----          2/7/2026   7:55 AM                ast-types-flow@0.0.8
+d-----          2/7/2026   7:55 AM                async-function@1.0.0
+d-----          2/7/2026   7:55 AM                available-typed-arrays@1.0.7
+d-----          2/7/2026   7:55 AM                axe-core@4.11.1
+d-----          2/7/2026   7:55 AM                axobject-query@4.1.0
+d-----          2/7/2026   7:55 AM                balanced-match@1.0.2
+d-----          2/7/2026   7:55 AM                base64-js@1.5.1
+d-----          2/7/2026   7:55 AM                baseline-browser-mapping@2.9.
+                                                  19
+d-----          2/7/2026   7:55 AM                brace-expansion@1.1.12
+d-----          2/7/2026   7:55 AM                brace-expansion@2.0.2
+d-----          2/7/2026   7:55 AM                braces@3.0.3
+d-----          2/7/2026   7:55 AM                browserslist@4.28.1
+d-----          2/7/2026   7:55 AM                buffer@6.0.3
+d-----          2/7/2026   7:55 AM                call-bind-apply-helpers@1.0.2
+d-----          2/7/2026   7:55 AM                call-bind@1.0.8
+d-----          2/7/2026   7:55 AM                call-bound@1.0.4
+d-----          2/7/2026   7:55 AM                callsites@3.1.0
+d-----          2/7/2026   7:55 AM                caniuse-lite@1.0.30001768
+d-----          2/7/2026   7:55 AM                chalk@4.1.2
+d-----          2/7/2026   7:55 AM                class-variance-authority@0.7.
+                                                  1
+d-----          2/7/2026   7:55 AM                client-only@0.0.1
+d-----          2/7/2026   7:55 AM                clsx@2.1.1
+d-----          2/7/2026   7:55 AM                cmdk@1.1.1_@types+react-dom_7
+                                                  82765cc532ca225855ef4ce2663a3
+                                                  cd
+d-----          2/7/2026   7:55 AM                color-convert@2.0.1
+d-----          2/7/2026   7:55 AM                color-name@1.1.4
+d-----          2/7/2026   7:55 AM                concat-map@0.0.1
+d-----          2/7/2026   7:55 AM                convert-source-map@2.0.0
+d-----          2/7/2026   7:55 AM                core-util-is@1.0.3
+d-----          2/7/2026   7:55 AM                cross-spawn@7.0.6
+d-----          2/7/2026   7:55 AM                csstype@3.2.3
+d-----          2/7/2026   7:55 AM                d3-array@3.2.4
+d-----          2/7/2026   7:55 AM                d3-color@3.1.0
+d-----          2/7/2026   7:55 AM                d3-ease@3.0.1
+d-----          2/7/2026   7:55 AM                d3-format@3.1.2
+d-----          2/7/2026   7:55 AM                d3-interpolate@3.0.1
+d-----          2/7/2026   7:55 AM                d3-path@3.1.0
+d-----          2/7/2026   7:55 AM                d3-scale@4.0.2
+d-----          2/7/2026   7:55 AM                d3-shape@3.2.0
+d-----          2/7/2026   7:55 AM                d3-time-format@4.1.0
+d-----          2/7/2026   7:55 AM                d3-time@3.1.0
+d-----          2/7/2026   7:55 AM                d3-timer@3.0.1
+d-----          2/7/2026   7:55 AM                damerau-levenshtein@1.0.8
+d-----          2/7/2026   7:55 AM                data-view-buffer@1.0.2
+d-----          2/7/2026   7:55 AM                data-view-byte-length@1.0.2
+d-----          2/7/2026   7:55 AM                data-view-byte-offset@1.0.1
+d-----          2/7/2026   7:55 AM                date-fns-jalali@4.1.0-0
+d-----          2/7/2026   7:55 AM                date-fns@4.1.0
+d-----          2/7/2026   7:55 AM                debug@3.2.7
+d-----          2/7/2026   7:55 AM                debug@4.4.3
+d-----          2/7/2026   7:55 AM                decimal.js-light@2.5.1
+d-----          2/7/2026   7:55 AM                deep-is@0.1.4
+d-----          2/7/2026   7:55 AM                define-data-property@1.1.4
+d-----          2/7/2026   7:55 AM                define-properties@1.2.1
+d-----          2/7/2026   7:55 AM                detect-libc@2.1.2
+d-----          2/7/2026   7:55 AM                detect-node-es@1.1.0
+d-----          2/7/2026   7:55 AM                doctrine@2.1.0
+d-----          2/7/2026   7:55 AM                dom-helpers@5.2.1
+d-----          2/7/2026   7:55 AM                dunder-proto@1.0.1
+d-----          2/7/2026   7:55 AM                electron-to-chromium@1.5.286
+d-----          2/7/2026   7:55 AM                embla-carousel-react@8.6.0_re
+                                                  act@19.2.1
+d-----          2/7/2026   7:55 AM                embla-carousel-reactive-utils
+                                                  @8.6.0_embla-carousel@8.6.0
+d-----          2/7/2026   7:55 AM                embla-carousel@8.6.0
+d-----          2/7/2026   7:55 AM                emoji-regex@9.2.2
+d-----          2/7/2026   7:55 AM                enhanced-resolve@5.19.0
+d-----          2/7/2026   7:55 AM                es-abstract@1.24.1
+d-----          2/7/2026   7:55 AM                es-define-property@1.0.1
+d-----          2/7/2026   7:55 AM                es-errors@1.3.0
+d-----          2/7/2026   7:55 AM                es-iterator-helpers@1.2.2
+d-----          2/7/2026   7:55 AM                es-object-atoms@1.1.1
+d-----          2/7/2026   7:55 AM                es-set-tostringtag@2.1.0
+d-----          2/7/2026   7:55 AM                es-shim-unscopables@1.1.0
+d-----          2/7/2026   7:55 AM                es-to-primitive@1.3.0
+d-----          2/7/2026   7:55 AM                escalade@3.2.0
+d-----          2/7/2026   7:55 AM                escape-string-regexp@4.0.0
+d-----          2/7/2026   7:55 AM                eslint-config-next@16.0.10__5
+                                                  0795341e8add1a2aa1d618dd8c6bb
+                                                  6d
+d-----          2/7/2026   7:55 AM                eslint-import-resolver-node@0
+                                                  .3.9
+d-----          2/7/2026   7:55 AM                eslint-import-resolver-type_a
+                                                  62b4c74c1dfb39206bd7130f6c576
+                                                  b5
+d-----          2/7/2026   7:55 AM                eslint-module-utils@2.12.1__0
+                                                  0b3ff73d5061605e21b2c866e3348
+                                                  d6
+d-----          2/7/2026   7:55 AM                eslint-plugin-import@2.32.0_e
+                                                  d970c4fb7f2f1ba3b79d0436f9356
+                                                  5e
+d-----          2/7/2026   7:55 AM                eslint-plugin-jsx-a11y@6.10.2
+                                                  _eslint@9.39.2_jiti@2.6.1_
+d-----          2/7/2026   7:55 AM                eslint-plugin-react-hooks@7.0
+                                                  .1_eslint@9.39.2_jiti@2.6.1_
+d-----          2/7/2026   7:55 AM                eslint-plugin-react@7.37.5_es
+                                                  lint@9.39.2_jiti@2.6.1_
+d-----          2/7/2026   7:55 AM                eslint-scope@8.4.0
+d-----          2/7/2026   7:55 AM                eslint-visitor-keys@3.4.3
+d-----          2/7/2026   7:55 AM                eslint-visitor-keys@4.2.1
+d-----          2/7/2026   7:55 AM                eslint@9.39.2_jiti@2.6.1
+d-----          2/7/2026   7:55 AM                espree@10.4.0
+d-----          2/7/2026   7:55 AM                esquery@1.7.0
+d-----          2/7/2026   7:55 AM                esrecurse@4.3.0
+d-----          2/7/2026   7:55 AM                estraverse@5.3.0
+d-----          2/7/2026   7:55 AM                esutils@2.0.3
+d-----          2/7/2026   7:55 AM                event-target-shim@5.0.1
+d-----          2/7/2026   7:55 AM                eventemitter3@4.0.7
+d-----          2/7/2026   7:55 AM                events@3.3.0
+d-----          2/7/2026   7:55 AM                fast-deep-equal@3.1.3
+d-----          2/7/2026   7:55 AM                fast-equals@5.4.0
+d-----          2/7/2026   7:55 AM                fast-glob@3.3.1
+d-----          2/7/2026   7:55 AM                fast-json-stable-stringify@2.
+                                                  1.0
+d-----          2/7/2026   7:55 AM                fast-levenshtein@2.0.6
+d-----          2/7/2026   7:55 AM                fastq@1.20.1
+d-----          2/7/2026   7:55 AM                fdir@6.5.0_picomatch@4.0.3
+d-----          2/7/2026   7:55 AM                file-entry-cache@8.0.0
+d-----          2/7/2026   7:55 AM                fill-range@7.1.1
+d-----          2/7/2026   7:55 AM                find-up@5.0.0
+d-----          2/7/2026   7:55 AM                flat-cache@4.0.1
+d-----          2/7/2026   7:55 AM                flatted@3.3.3
+d-----          2/7/2026   7:55 AM                for-each@0.3.5
+d-----          2/7/2026   7:55 AM                function-bind@1.1.2
+d-----          2/7/2026   7:55 AM                function.prototype.name@1.1.8
+d-----          2/7/2026   7:55 AM                functions-have-names@1.2.3
+d-----          2/7/2026   7:55 AM                generator-function@2.0.1
+d-----          2/7/2026   7:55 AM                gensync@1.0.0-beta.2
+d-----          2/7/2026   7:55 AM                get-intrinsic@1.3.0
+d-----          2/7/2026   7:55 AM                get-nonce@1.0.1
+d-----          2/7/2026   7:55 AM                get-proto@1.0.1
+d-----          2/7/2026   7:55 AM                get-symbol-description@1.1.0
+d-----          2/7/2026   7:55 AM                get-tsconfig@4.13.3
+d-----          2/7/2026   7:55 AM                glob-parent@5.1.2
+d-----          2/7/2026   7:55 AM                glob-parent@6.0.2
+d-----          2/7/2026   7:55 AM                globals@14.0.0
+d-----          2/7/2026   7:55 AM                globals@16.4.0
+d-----          2/7/2026   7:55 AM                globalthis@1.0.4
+d-----          2/7/2026   7:55 AM                gopd@1.2.0
+d-----          2/7/2026   7:55 AM                graceful-fs@4.2.11
+d-----          2/7/2026   7:55 AM                has-bigints@1.1.0
+d-----          2/7/2026   7:55 AM                has-flag@4.0.0
+d-----          2/7/2026   7:55 AM                has-property-descriptors@1.0.
+                                                  2
+d-----          2/7/2026   7:55 AM                has-proto@1.2.0
+d-----          2/7/2026   7:55 AM                has-symbols@1.1.0
+d-----          2/7/2026   7:55 AM                has-tostringtag@1.0.2
+d-----          2/7/2026   7:55 AM                hasown@2.0.2
+d-----          2/7/2026   7:55 AM                hermes-estree@0.25.1
+d-----          2/7/2026   7:55 AM                hermes-parser@0.25.1
+d-----          2/7/2026   7:55 AM                ieee754@1.2.1
+d-----          2/7/2026   7:55 AM                ignore@5.3.2
+d-----          2/7/2026   7:55 AM                ignore@7.0.5
+d-----          2/7/2026   7:55 AM                immediate@3.0.6
+d-----          2/7/2026   7:55 AM                import-fresh@3.3.1
+d-----          2/7/2026   7:55 AM                imurmurhash@0.1.4
+d-----          2/7/2026   7:55 AM                inherits@2.0.4
+d-----          2/7/2026   7:55 AM                input-otp@1.4.2_react-dom@19.
+                                                  2.1_react@19.2.1__react@19.2.
+                                                  1
+d-----          2/7/2026   7:55 AM                internal-slot@1.1.0
+d-----          2/7/2026   7:55 AM                internmap@2.0.3
+d-----          2/7/2026   7:55 AM                is-array-buffer@3.0.5
+d-----          2/7/2026   7:55 AM                is-async-function@2.1.1
+d-----          2/7/2026   7:55 AM                is-bigint@1.1.0
+d-----          2/7/2026   7:55 AM                is-boolean-object@1.2.2
+d-----          2/7/2026   7:55 AM                is-bun-module@2.0.0
+d-----          2/7/2026   7:55 AM                is-callable@1.2.7
+d-----          2/7/2026   7:55 AM                is-core-module@2.16.1
+d-----          2/7/2026   7:55 AM                is-data-view@1.0.2
+d-----          2/7/2026   7:55 AM                is-date-object@1.1.0
+d-----          2/7/2026   7:55 AM                is-extglob@2.1.1
+d-----          2/7/2026   7:55 AM                is-finalizationregistry@1.1.1
+d-----          2/7/2026   7:55 AM                is-generator-function@1.1.2
+d-----          2/7/2026   7:55 AM                is-glob@4.0.3
+d-----          2/7/2026   7:55 AM                is-map@2.0.3
+d-----          2/7/2026   7:55 AM                is-negative-zero@2.0.3
+d-----          2/7/2026   7:55 AM                is-number-object@1.1.1
+d-----          2/7/2026   7:55 AM                is-number@7.0.0
+d-----          2/7/2026   7:55 AM                is-regex@1.2.1
+d-----          2/7/2026   7:55 AM                is-set@2.0.3
+d-----          2/7/2026   7:55 AM                is-shared-array-buffer@1.0.4
+d-----          2/7/2026   7:55 AM                is-string@1.1.1
+d-----          2/7/2026   7:55 AM                is-symbol@1.1.1
+d-----          2/7/2026   7:55 AM                is-typed-array@1.1.15
+d-----          2/7/2026   7:55 AM                is-weakmap@2.0.2
+d-----          2/7/2026   7:55 AM                is-weakref@1.1.1
+d-----          2/7/2026   7:55 AM                is-weakset@2.0.4
+d-----          2/7/2026   7:55 AM                isarray@1.0.0
+d-----          2/7/2026   7:55 AM                isarray@2.0.5
+d-----          2/7/2026   7:55 AM                isexe@2.0.0
+d-----          2/7/2026   7:55 AM                iterator.prototype@1.1.5
+d-----          2/7/2026   7:55 AM                jiti@2.6.1
+d-----          2/7/2026   7:55 AM                js-tokens@4.0.0
+d-----          2/7/2026   7:55 AM                js-yaml@4.1.1
+d-----          2/7/2026   7:55 AM                jsesc@3.1.0
+d-----          2/7/2026   7:55 AM                json-buffer@3.0.1
+d-----          2/7/2026   7:55 AM                json-schema-traverse@0.4.1
+d-----          2/7/2026   7:55 AM                json-stable-stringify-without
+                                                  -jsonify@1.0.1
+d-----          2/7/2026   7:55 AM                json5@1.0.2
+d-----          2/7/2026   7:55 AM                json5@2.2.3
+d-----          2/7/2026   7:55 AM                jsx-ast-utils@3.3.5
+d-----          2/7/2026   7:55 AM                jszip@3.10.1
+d-----          2/7/2026   7:55 AM                keyv@4.5.4
+d-----          2/7/2026   7:55 AM                language-subtag-registry@0.3.
+                                                  23
+d-----          2/7/2026   7:55 AM                language-tags@1.0.9
+d-----          2/7/2026   7:55 AM                levn@0.4.1
+d-----          2/7/2026   7:55 AM                lie@3.3.0
+d-----          2/7/2026   7:55 AM                lightningcss-win32-x64-msvc@1
+                                                  .30.2
+d-----          2/7/2026   7:55 AM                lightningcss@1.30.2
+d-----          2/7/2026   7:55 AM                locate-path@6.0.0
+d-----          2/7/2026   7:55 AM                lodash.merge@4.6.2
+d-----          2/7/2026   7:55 AM                lodash@4.17.23
+d-----          2/7/2026   7:55 AM                loose-envify@1.4.0
+d-----          2/7/2026   7:55 AM                lru-cache@5.1.1
+d-----          2/7/2026   7:55 AM                lucide-react@0.561.0_react@19
+                                                  .2.1
+d-----          2/7/2026   7:55 AM                magic-string@0.30.21
+d-----          2/7/2026   7:55 AM                math-intrinsics@1.1.0
+d-----          2/7/2026   7:55 AM                merge2@1.4.1
+d-----          2/7/2026   7:55 AM                micromatch@4.0.8
+d-----          2/7/2026   7:55 AM                minimatch@3.1.2
+d-----          2/7/2026   7:55 AM                minimatch@9.0.5
+d-----          2/7/2026   7:55 AM                minimist@1.2.8
+d-----          2/7/2026   7:55 AM                ms@2.1.3
+d-----          2/7/2026   7:55 AM                nanoid@3.3.11
+d-----          2/7/2026   7:55 AM                napi-postinstall@0.3.4
+d-----          2/7/2026   7:55 AM                natural-compare@1.4.0
+d-----          2/7/2026   7:55 AM                next-themes@0.4.6_react-dom_2
+                                                  40c807d63df3e5f63e6bf0e23d148
+                                                  5e
+d-----          2/7/2026   7:55 AM                next@16.0.10_@babel+core@7._e
+                                                  88067e1496135681e1b86950767d8
+                                                  97
+d-----          2/7/2026   7:55 AM                node-releases@2.0.27
+d-----          2/7/2026   7:56 AM                node_modules
+d-----          2/7/2026   7:55 AM                object-assign@4.1.1
+d-----          2/7/2026   7:55 AM                object-inspect@1.13.4
+d-----          2/7/2026   7:55 AM                object-keys@1.1.1
+d-----          2/7/2026   7:55 AM                object.assign@4.1.7
+d-----          2/7/2026   7:55 AM                object.entries@1.1.9
+d-----          2/7/2026   7:55 AM                object.fromentries@2.0.8
+d-----          2/7/2026   7:55 AM                object.groupby@1.0.3
+d-----          2/7/2026   7:55 AM                object.values@1.2.1
+d-----          2/7/2026   7:55 AM                optionator@0.9.4
+d-----          2/7/2026   7:55 AM                own-keys@1.0.1
+d-----          2/7/2026   7:55 AM                p-limit@3.1.0
+d-----          2/7/2026   7:55 AM                p-locate@5.0.0
+d-----          2/7/2026   7:55 AM                pako@1.0.11
+d-----          2/7/2026   7:55 AM                parent-module@1.0.1
+d-----          2/7/2026   7:55 AM                path-exists@4.0.0
+d-----          2/7/2026   7:55 AM                path-key@3.1.1
+d-----          2/7/2026   7:55 AM                path-parse@1.0.7
+d-----          2/7/2026   7:55 AM                picocolors@1.1.1
+d-----          2/7/2026   7:55 AM                picomatch@2.3.1
+d-----          2/7/2026   7:55 AM                picomatch@4.0.3
+d-----          2/7/2026   7:55 AM                possible-typed-array-names@1.
+                                                  1.0
+d-----          2/7/2026   7:55 AM                postcss@8.4.31
+d-----          2/7/2026   7:55 AM                postcss@8.5.6
+d-----          2/7/2026   7:55 AM                prelude-ls@1.2.1
+d-----          2/7/2026   7:55 AM                process-nextick-args@2.0.1
+d-----          2/7/2026   7:55 AM                process@0.11.10
+d-----          2/7/2026   7:55 AM                prop-types@15.8.1
+d-----          2/7/2026   7:55 AM                punycode@2.3.1
+d-----          2/7/2026   7:55 AM                queue-microtask@1.2.3
+d-----          2/7/2026   7:55 AM                react-day-picker@9.13.0_react
+                                                  @19.2.1
+d-----          2/7/2026   7:55 AM                react-dom@19.2.1_react@19.2.1
+d-----          2/7/2026   7:55 AM                react-hook-form@7.71.1_react@
+                                                  19.2.1
+d-----          2/7/2026   7:55 AM                react-is@16.13.1
+d-----          2/7/2026   7:55 AM                react-is@18.3.1
+d-----          2/7/2026   7:55 AM                react-remove-scroll-bar@2.3_1
+                                                  5472e2aae7a2c2e24e9e1dfa0602d
+                                                  ef
+d-----          2/7/2026   7:55 AM                react-remove-scroll@2.7.2_@ty
+                                                  pes+react@19.2.13_react@19.2.
+                                                  1
+d-----          2/7/2026   7:55 AM                react-resizable-panels@3.0._4
+                                                  9580f8fe26be72a886c7eae88b2c1
+                                                  35
+d-----          2/7/2026   7:55 AM                react-smooth@4.0.4_react-do_d
+                                                  e8a9276326c25f2f4d648b461fa69
+                                                  1e
+d-----          2/7/2026   7:55 AM                react-style-singleton@2.2.3_f
+                                                  359d4ace110778270a049cb405a13
+                                                  b4
+d-----          2/7/2026   7:55 AM                react-transition-group@4.4._b
+                                                  722a0dfdf5dc5276a7a399cc52a77
+                                                  69
+d-----          2/7/2026   7:55 AM                react@19.2.1
+d-----          2/7/2026   7:55 AM                readable-stream@2.3.8
+d-----          2/7/2026   7:55 AM                readable-stream@4.7.0
+d-----          2/7/2026   7:55 AM                recharts-scale@0.4.5
+d-----          2/7/2026   7:55 AM                recharts@2.15.4_react-dom@19.
+                                                  2.1_react@19.2.1__react@19.2.
+                                                  1
+d-----          2/7/2026   7:55 AM                reflect.getprototypeof@1.0.10
+d-----          2/7/2026   7:55 AM                regexp.prototype.flags@1.5.4
+d-----          2/7/2026   7:55 AM                replicate@1.4.0
+d-----          2/7/2026   7:55 AM                resolve-from@4.0.0
+d-----          2/7/2026   7:55 AM                resolve-pkg-maps@1.0.0
+d-----          2/7/2026   7:55 AM                resolve@1.22.11
+d-----          2/7/2026   7:55 AM                resolve@2.0.0-next.5
+d-----          2/7/2026   7:55 AM                reusify@1.1.0
+d-----          2/7/2026   7:55 AM                run-parallel@1.2.0
+d-----          2/7/2026   7:55 AM                safe-array-concat@1.1.3
+d-----          2/7/2026   7:55 AM                safe-buffer@5.1.2
+d-----          2/7/2026   7:55 AM                safe-buffer@5.2.1
+d-----          2/7/2026   7:55 AM                safe-push-apply@1.0.0
+d-----          2/7/2026   7:55 AM                safe-regex-test@1.1.0
+d-----          2/7/2026   7:55 AM                scheduler@0.27.0
+d-----          2/7/2026   7:55 AM                semver@6.3.1
+d-----          2/7/2026   7:55 AM                semver@7.7.4
+d-----          2/7/2026   7:55 AM                set-function-length@1.2.2
+d-----          2/7/2026   7:55 AM                set-function-name@2.0.2
+d-----          2/7/2026   7:55 AM                set-proto@1.0.0
+d-----          2/7/2026   7:55 AM                setimmediate@1.0.5
+d-----          2/7/2026   7:55 AM                sharp@0.34.5
+d-----          2/7/2026   7:55 AM                shebang-command@2.0.0
+d-----          2/7/2026   7:55 AM                shebang-regex@3.0.0
+d-----          2/7/2026   7:55 AM                side-channel-list@1.0.0
+d-----          2/7/2026   7:55 AM                side-channel-map@1.0.1
+d-----          2/7/2026   7:55 AM                side-channel-weakmap@1.0.2
+d-----          2/7/2026   7:55 AM                side-channel@1.1.0
+d-----          2/7/2026   7:55 AM                sonner@2.0.7_react-dom@19.2.1
+                                                  _react@19.2.1__react@19.2.1
+d-----          2/7/2026   7:55 AM                source-map-js@1.2.1
+d-----          2/7/2026   7:55 AM                stable-hash@0.0.5
+d-----          2/7/2026   7:55 AM                stop-iteration-iterator@1.1.0
+d-----          2/7/2026   7:55 AM                string.prototype.includes@2.0
+                                                  .1
+d-----          2/7/2026   7:55 AM                string.prototype.matchall@4.0
+                                                  .12
+d-----          2/7/2026   7:55 AM                string.prototype.repeat@1.0.0
+d-----          2/7/2026   7:55 AM                string.prototype.trim@1.2.10
+d-----          2/7/2026   7:55 AM                string.prototype.trimend@1.0.
+                                                  9
+d-----          2/7/2026   7:55 AM                string.prototype.trimstart@1.
+                                                  0.8
+d-----          2/7/2026   7:55 AM                string_decoder@1.1.1
+d-----          2/7/2026   7:55 AM                string_decoder@1.3.0
+d-----          2/7/2026   7:55 AM                strip-bom@3.0.0
+d-----          2/7/2026   7:55 AM                strip-json-comments@3.1.1
+d-----          2/7/2026   7:55 AM                styled-jsx@5.1.6_@babel+core@
+                                                  7.29.0_react@19.2.1
+d-----          2/7/2026   7:55 AM                supports-color@7.2.0
+d-----          2/7/2026   7:55 AM                supports-preserve-symlinks-fl
+                                                  ag@1.0.0
+d-----          2/7/2026   7:55 AM                tailwind-merge@3.4.0
+d-----          2/7/2026   7:55 AM                tailwindcss@4.1.18
+d-----          2/7/2026   7:55 AM                tapable@2.3.0
+d-----          2/7/2026   7:55 AM                tiny-invariant@1.3.3
+d-----          2/7/2026   7:55 AM                tinyglobby@0.2.15
+d-----          2/7/2026   7:55 AM                to-regex-range@5.0.1
+d-----          2/7/2026   7:55 AM                ts-api-utils@2.4.0_typescript
+                                                  @5.9.3
+d-----          2/7/2026   7:55 AM                tsconfig-paths@3.15.0
+d-----          2/7/2026   7:55 AM                tslib@2.8.1
+d-----          2/7/2026   7:55 AM                tw-animate-css@1.4.0
+d-----          2/7/2026   7:55 AM                type-check@0.4.0
+d-----          2/7/2026   7:55 AM                typed-array-buffer@1.0.3
+d-----          2/7/2026   7:55 AM                typed-array-byte-length@1.0.3
+d-----          2/7/2026   7:55 AM                typed-array-byte-offset@1.0.4
+d-----          2/7/2026   7:55 AM                typed-array-length@1.0.7
+d-----          2/7/2026   7:55 AM                typescript-eslint@8.54.0_es_9
+                                                  d3a6a5669c06e6ab499ee0ae0b3c8
+                                                  0b
+d-----          2/7/2026   7:55 AM                typescript@5.9.3
+d-----          2/7/2026   7:55 AM                unbox-primitive@1.1.0
+d-----          2/7/2026   7:55 AM                undici-types@6.21.0
+d-----          2/7/2026   7:55 AM                unrs-resolver@1.11.1
+d-----          2/7/2026   7:55 AM                update-browserslist-db@1.2.3_
+                                                  browserslist@4.28.1
+d-----          2/7/2026   7:55 AM                uri-js@4.4.1
+d-----          2/7/2026   7:55 AM                use-callback-ref@1.3.3_@types
+                                                  +react@19.2.13_react@19.2.1
+d-----          2/7/2026   7:55 AM                use-sidecar@1.1.3_@types+reac
+                                                  t@19.2.13_react@19.2.1
+d-----          2/7/2026   7:55 AM                use-sync-external-store@1.6.0
+                                                  _react@19.2.1
+d-----          2/7/2026   7:55 AM                util-deprecate@1.0.2
+d-----          2/7/2026   7:55 AM                vaul@1.1.2_@types+react-dom_9
+                                                  28a01f2168de3f360a6d225170545
+                                                  24
+d-----          2/7/2026   7:55 AM                victory-vendor@36.9.2
+d-----          2/7/2026   7:55 AM                which-boxed-primitive@1.1.1
+d-----          2/7/2026   7:55 AM                which-builtin-type@1.2.1
+d-----          2/7/2026   7:55 AM                which-collection@1.0.2
+d-----          2/7/2026   7:55 AM                which-typed-array@1.1.20
+d-----          2/7/2026   7:55 AM                which@2.0.2
+d-----          2/7/2026   7:55 AM                word-wrap@1.2.5
+d-----          2/7/2026   7:55 AM                yallist@3.1.1
+d-----          2/7/2026   7:55 AM                yet-another-react-lightbox@_6
+                                                  7fb1ee2917b32eb517cf43ed89c1c
+                                                  03
+d-----          2/7/2026   7:55 AM                yocto-queue@0.1.0
+d-----          2/7/2026   7:55 AM                zod-validation-error@4.0.2_zo
+                                                  d@4.3.6
+d-----          2/7/2026   7:55 AM                zod@4.3.6
+-a----          2/7/2026   7:56 AM         234396 lock.yaml
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\@hookform
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l          2/7/2026   7:56 AM                resolvers
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\@radix-ui
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l          2/7/2026   7:56 AM                react-accordion
+d----l          2/7/2026   7:56 AM                react-alert-dialog
+d----l          2/7/2026   7:56 AM                react-aspect-ratio
+d----l          2/7/2026   7:56 AM                react-avatar
+d----l          2/7/2026   7:56 AM                react-checkbox
+d----l          2/7/2026   7:56 AM                react-collapsible
+d----l          2/7/2026   7:56 AM                react-context-menu
+d----l          2/7/2026   7:56 AM                react-dialog
+d----l          2/7/2026   7:56 AM                react-dropdown-menu
+d----l          2/7/2026   7:56 AM                react-hover-card
+d----l          2/7/2026   7:56 AM                react-label
+d----l          2/7/2026   7:56 AM                react-menubar
+d----l          2/7/2026   7:56 AM                react-navigation-menu
+d----l          2/7/2026   7:56 AM                react-popover
+d----l          2/7/2026   7:56 AM                react-progress
+d----l          2/7/2026   7:56 AM                react-radio-group
+d----l          2/7/2026   7:56 AM                react-scroll-area
+d----l          2/7/2026   7:56 AM                react-select
+d----l          2/7/2026   7:56 AM                react-separator
+d----l          2/7/2026   7:56 AM                react-slider
+d----l          2/7/2026   7:56 AM                react-slot
+d----l          2/7/2026   7:56 AM                react-switch
+d----l          2/7/2026   7:56 AM                react-tabs
+d----l          2/7/2026   7:56 AM                react-toggle
+d----l          2/7/2026   7:56 AM                react-toggle-group
+d----l          2/7/2026   7:56 AM                react-tooltip
+    Directory:
+    C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\@tailwindcss
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l          2/7/2026   7:56 AM                postcss
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\@types
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l          2/7/2026   7:56 AM                node
+d----l          2/7/2026   7:56 AM                react
+d----l          2/7/2026   7:56 AM                react-dom
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\node_modules\@vercel
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----l          2/7/2026   7:56 AM                analytics
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\public
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----          2/7/2026   7:24 AM                font-gal
+-a----          2/7/2026   7:55 AM        7930699 GOKANI FAVICON.svg
+-a----          2/7/2026   7:55 AM         584312 gokanix1200x630.png
+-a----          2/7/2026   7:55 AM         368957 gokanix512.png
+-a----          2/7/2026   7:55 AM        9849705 header svg gokani.svg
+    Directory: C:\Users\brand\Downloads\GOKAFONTA\goka\public\font-gal
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          2/6/2026   7:22 PM          57131 ABBEY DAMN_Font_Abbey_Dawn_by
+                                                  _loveinhoollywood.png
+-a----          2/6/2026   7:22 PM          50156 Abhinaya_ABHINAYA Free
+                                                  Version.png
+-a----          2/6/2026   7:22 PM          57070 ACE Records_Ace_Records.png
+-a----          2/6/2026   7:22 PM          32034 Acuentre_Acuentre.png
+-a----          2/6/2026   7:22 PM          27146 agise_AgiseRujdiRegular.png
+-a----          2/6/2026   7:22 PM          34391 Anger Styles_AngerStyles.png
+-a----          2/6/2026   7:22 PM          25694 Armagist Regular_armagist.png
+-a----          2/6/2026   7:22 PM          26680 Asinges Regular_Asinges.png
+-a----          2/6/2026   7:22 PM          33460 Auriga_Auriga-BF657ea7a30d095
+                                                  .png
+-a----          2/6/2026   7:22 PM          27639 AUVELAMERDE_Auvelamerde.png
+-a----          2/6/2026   7:22 PM          26123 Avalen Rekas_AvalenRekasRegul
+                                                  ar-ZVZa8.png
+-a----          2/6/2026   7:22 PM          22990 Bangilan_Bangilan.png
+-a----          2/6/2026   7:22 PM          61077 Baroneys_BaroneysTextured.png
+-a----          2/6/2026   7:22 PM          41223 Bemdayni_bemdayni-e9jgp.png
+-a----          2/6/2026   7:22 PM          20381 Betchers_Betchers.png
+-a----          2/6/2026   7:22 PM          71714 Beyond Wonderland_Beyond
+                                                  Wonderland.png
+-a----          2/6/2026   7:22 PM          26061 black saviour_Black
+                                                  Savior.png
+-a----          2/6/2026   7:22 PM          38036 Black Skate_Black Skate.png
+-a----          2/6/2026   7:22 PM          25459 Blackburr_Blackburr.png
+-a----          2/6/2026   7:22 PM          37516 Blackcat_TcblackcatRegular-pg
+                                                  Zjd.png
+-a----          2/6/2026   7:22 PM          46301 BlackChancery_BLKCHCRY.png
+-a----          2/6/2026   7:22 PM          78546 Bleeding
+                                                  cowboys_Bleeding_Cowboys.png
+-a----          2/6/2026   7:22 PM          56306 Blood of Dracula_Bloodrac.png
+-a----          2/6/2026   7:23 PM          46820 Bristol maver_BristolMaverReg
+                                                  ular-ow0P0.png
+-a----          2/6/2026   7:23 PM          42846 Brotherhood
+                                                  Script_Brotherhood_Script.png
+-a----          2/6/2026   7:23 PM          19608 Brotherhood_Brotherhood.png
+-a----          2/6/2026   7:23 PM          46075 Brotherhood_Butter
+                                                  Haunted.png
+-a----          2/6/2026   7:23 PM          46075 Butter Haunted_Butter
+                                                  Haunted (1).png
+-a----          2/6/2026   7:23 PM          50572 C.S Bergamot_csbergamot-regul
+                                                  ar.png
+-a----          2/6/2026   7:23 PM          40019 Chappel Text_Chappel-Text.png
+-a----          2/6/2026   7:23 PM          55085 charming_CHARMING.png
+-a----          2/6/2026   7:23 PM          38136 circus age_Circus-Age.png
+-a----          2/6/2026   7:23 PM          45580 Cloister
+                                                  Black_CloisterBlack.png
+-a----          2/6/2026   7:23 PM          21977 Curseyt_Curseyt-drq1g.png
+-a----          2/6/2026   7:23 PM          63953 Daisuky
+                                                  Fancy_DaisukyFancy-gxp71.png
+-a----          2/6/2026   7:23 PM          31103 Dark Angeles_dark-angels.regu
+                                                  lar.png
+-a----          2/6/2026   7:23 PM          62184 DEATH CROW_DEATHCROW.png
+-a----          2/6/2026   7:23 PM          22884 DEATH DEVIL_Death_Devil.png
+-a----          2/6/2026   7:23 PM          26107 Diploma regular_diploma.png
+-a----          2/6/2026   7:23 PM          85241 Dirt 2 soulstalker_dirt2_soul
+                                                  stalker.png
+-a----          2/6/2026   7:23 PM          27583 Distropiax_Distropiax-WpYMA.p
+                                                  ng
+-a----          2/6/2026   7:23 PM          30694 ETHERION_Etherion FREE.png
+-a----          2/6/2026   7:23 PM          63147 Faith Regular_BelongFaithRegu
+                                                  lar-nRJJM.png
+-a----          2/6/2026   7:23 PM          28211 Familia_Familia.png
+-a----          2/6/2026   7:23 PM          79818 Feathergraphy_FeathergraphyDe
+                                                  coration-BXYx.png
+-a----          2/6/2026   7:23 PM          36173 FIOLEX
+                                                  MEPHISTO_Fiolex_Mephisto.png
+-a----          2/6/2026   7:23 PM          20814 Firwaen_FIRWAENpersonaluse.pn
+                                                  g
+-a----          2/6/2026   7:23 PM          43482 ForsakenEmper_Forsaken
+                                                  Emperor.png
+-a----          2/6/2026   7:23 PM          47504 Frankenstein_FRNKSTNN.png
+-a----          2/6/2026   7:23 PM          39323 Gorillabeer Gorillabeerbase_G
+                                                  orillabeer-Gorillabeerbase.pn
+                                                  g
+-a----          2/6/2026   7:23 PM          35703 gothical_Gothical.png
+-a----          2/6/2026   7:23 PM          62855 Grusskarten Gotisch_Grusskart
+                                                  enGotisch.png
+-a----          2/6/2026   7:23 PM          38076 Hacjiuza_Hacjiuza_Dirty.png
+-a----          2/6/2026   7:23 PM          30343 Hathama_Hathama-XGVEg.png
+-a----          2/6/2026   7:23 PM          63716 Hostgard_HostgardPersonalUse-
+                                                  JpmZB.png
+-a----          2/6/2026   7:23 PM          60326 JOCKER_Jocker Extrude
+                                                  Right.png
+-a----          2/6/2026   7:23 PM          21629 Justify_Justify.png
+-a----          2/6/2026   7:23 PM          60647 Kingthings_KingthingsSpikeles
+                                                  s-lKPZ.png
+-a----          2/6/2026   7:23 PM          15518 LETHAL_lethal-injector-regula
+                                                  r.png
+-a----          2/6/2026   7:23 PM          19762 living stone_Livingstone.png
+-a----          2/6/2026   7:23 PM          26508 Lordish_Lordish-Regular.png
+-a----          2/6/2026   7:23 PM          39136 Markingmate_markingmateperson
+                                                  aluse-2oo9e.png
+-a----          2/6/2026   7:23 PM          56283 Metal macabre_MetalFest.png
+-a----          2/6/2026   7:23 PM          28990 Metal Thorn_metalthornregular
+                                                  -0w43g.png
+-a----          2/6/2026   7:23 PM          25347 Monika_Monika.png
+-a----          2/6/2026   7:23 PM          22800 MONK_Monk-Gothic.png
+-a----          2/6/2026   7:23 PM          26687 Monolith_Monolith-Regular.png
+-a----          2/6/2026   7:23 PM          19945 NESTCOLOGY_Nestcology.png
+-a----          2/6/2026   7:23 PM          21453 Nortnoh_NortnohRegular-8MEPA.
+                                                  png
+-a----          2/6/2026   7:23 PM          33604 old english_OldeEnglish.png
+-a----          2/6/2026   7:23 PM          50006 perfect signature_perfect-sig
+                                                  nature.png
+-a----          2/6/2026   7:23 PM          51030 Rampage Monoline_RampageMonol
+                                                  ine-Rounded.png
+-a----          2/6/2026   7:23 PM           9140 REBUTE_Rebute.png
+-a----          2/6/2026   7:23 PM          20951 Red Royale_Red Royale.png
+-a----          2/6/2026   7:23 PM          37162 Redsniper_Redsniper.png
+-a----          2/6/2026   7:23 PM          30886 Respective_Respective_2.0.png
+-a----          2/6/2026   7:23 PM          29121 Retro
+                                                  Signature_RetroSignature.png
+-a----          2/6/2026   7:23 PM          23813 Rooters_Rooters.png
+-a----          2/6/2026   7:23 PM          24523 Scarbes_Scarbes.png
+-a----          2/6/2026   7:23 PM          78794 Shadowed
+                                                  Black_Shadowed_Black.png
+-a----          2/6/2026   7:23 PM          24622 Shiny kage_Shiny kage.png
+-a----          2/6/2026   7:23 PM          62791 Single Ghost_SingleGhost
+                                                  regular.png
+-a----          2/6/2026   7:23 PM          93313 snakefangs_SnakeFangs
+                                                  FREE.png
+-a----          2/6/2026   7:23 PM          65024 Soulside Betrayed_SoulsideBet
+                                                  rayed-3lazX.png
+-a----          2/6/2026   7:23 PM          87854 Stay Classy_Stay Classy
+                                                  SLDT.png
+-a----          2/6/2026   7:23 PM          43727 Taylor
+                                                  Gothic_TaylorGothic.png
+-a----          2/6/2026   7:23 PM          41266 The Amazing Spiderman_The_Ama
+                                                  zing_Spider-Man.png
+-a----          2/6/2026   7:23 PM          68505 The Crow
+                                                  Shadow_TheCrowShadow.png
+-a----          2/6/2026   7:23 PM          74119 The Lastring_TheLastring-DOLZ
+                                                  W.png
+-a----          2/6/2026   7:23 PM          57180 Thousand familia_Thousand
+                                                  Familia Regular.png
+-a----          2/6/2026   7:23 PM          23154 Throwing
+                                                  axes_ThrowingAxes.png
+-a----          2/6/2026   7:23 PM          79334 UNQUIET
+                                                  SPIRITS_Unquiet_Spirits.png
+-a----          2/6/2026   7:23 PM          43562 Wilson wells_Wilson wells.png
+-a----          2/6/2026   7:23 PM          28687 Wishmf_WishMF.png
+-a----          2/6/2026   7:23 PM          30559 Zepplines_Zepplines.png
+-a----          2/6/2026   7:23 PM          84565 Zoombie Holocaust_Zombie_Holo
+                                                  caust.png
