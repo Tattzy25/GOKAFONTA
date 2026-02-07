@@ -1,463 +1,523 @@
-'use client';
-import {
-  Conversation,
-  ConversationContent,
-  ConversationScrollButton,
-} from '@/components/ai-elements/conversation';
-import {
-  Message,
-  MessageContent,
-  MessageResponse,
-  MessageActions,
-  MessageAction,
-} from '@/components/ai-elements/message';
-import {
-  PromptInput,
-  PromptInputActionAddAttachments,
-  PromptInputActionMenu,
-  PromptInputActionMenuContent,
-  PromptInputActionMenuTrigger,
-  PromptInputAttachment,
-  PromptInputAttachments,
-  PromptInputBody,
-  PromptInputButton,
-  PromptInputHeader,
-  type PromptInputMessage,
+"use client"
 
-  PromptInputSubmit,
-  PromptInputTextarea,
-  PromptInputFooter,
-  PromptInputTools,
-} from '@/components/ai-elements/prompt-input';
-import { Fragment, useState } from 'react';
-import { useChat } from '@ai-sdk/react';
-import { CopyIcon, GlobeIcon, RefreshCcwIcon, ChevronDownIcon } from 'lucide-react';
-import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/app-sidebar';
-import { Button } from '@/components/ui/button';
-import { models } from '@/lib/models';
+import { useState, useRef } from "react"
+import { cn } from "@/lib/utils"
+import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Info, Loader2, Download, Sparkles, Share2, Edit } from "lucide-react"
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
+import { toast } from "sonner"
+import { generateImage } from "./actions"
 import {
-  ModelSelector,
-  ModelSelectorContent,
-  ModelSelectorEmpty,
-  ModelSelectorGroup,
-  ModelSelectorInput,
-  ModelSelectorItem,
-  ModelSelectorList,
-  ModelSelectorLogo,
-  ModelSelectorLogoGroup,
-  ModelSelectorName,
-  ModelSelectorTrigger,
-} from '@/components/ai-elements/model-selector';
-import {
-  Artifact,
-  ArtifactHeader,
-  ArtifactTitle,
-  ArtifactActions,
-  ArtifactAction,
-  ArtifactContent,
-} from '@/components/ai-elements/artifact';
-import { CodeBlock, CodeBlockCopyButton } from '@/components/ai-elements/code-block';
-import {
-  WebPreview,
-  WebPreviewNavigation,
-  WebPreviewUrl,
-  WebPreviewBody,
-} from '@/components/ai-elements/web-preview';
-import {
-  Confirmation,
-  ConfirmationTitle,
-  ConfirmationRequest,
-  ConfirmationAccepted,
-  ConfirmationRejected,
-  ConfirmationActions,
-  ConfirmationAction,
-} from '@/components/ai-elements/confirmation';
-import {
-  Tool,
-  ToolHeader,
-  ToolContent,
-  ToolInput,
-  ToolOutput,
-} from '@/components/ai-elements/tool';
-import {
-  ChainOfThought,
-  ChainOfThoughtHeader,
-  ChainOfThoughtContent,
-  ChainOfThoughtStep,
-} from '@/components/ai-elements/chain-of-thought';
-import { Checkpoint } from '@/components/ai-elements/checkpoint';
-import {
-  Context,
-  ContextTrigger,
-  ContextContent,
-  ContextContentHeader,
-  ContextContentBody,
-  ContextContentFooter,
-  ContextInputUsage,
-  ContextOutputUsage,
-  ContextReasoningUsage,
-} from '@/components/ai-elements/context';
-import { Image } from '@/components/ai-elements/image';
-import { InlineCitation } from '@/components/ai-elements/inline-citation';
-import {
-  OpenIn,
-  OpenInTrigger,
-  OpenInContent,
-  OpenInLabel,
-  OpenInChatGPT,
-  OpenInClaude,
-  OpenInSeparator,
-  OpenInScira,
-  OpenInv0,
-  OpenInCursor,
-} from '@/components/ai-elements/open-in-chat';
-import { Plan } from '@/components/ai-elements/plan';
-import { Queue } from '@/components/ai-elements/queue';
-import { Shimmer } from '@/components/ai-elements/shimmer';
-import { Suggestion } from '@/components/ai-elements/suggestion';
-import { Task } from '@/components/ai-elements/task';
-import { Separator } from '@/components/ui/separator';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import {
-  ResizablePanelGroup,
-  ResizablePanel,
-  ResizableHandle,
-} from '@/components/ui/resizable';
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
-import {
-  Source,
-  Sources,
-  SourcesContent,
-  SourcesTrigger,
-} from '@/components/ai-elements/sources';
-import {
-  Reasoning,
-  ReasoningContent,
-  ReasoningTrigger,
-} from '@/components/ai-elements/reasoning';
-import { Loader } from '@/components/ai-elements/loader';
+const FONT_GALLERY = [
+  { name: "Abbey Damn", file: "ABBEY DAMN_Font_Abbey_Dawn_by_loveinhoollywood.png" },
+  { name: "Abhinaya", file: "Abhinaya_ABHINAYA Free Version.png" },
+  { name: "Ace Records", file: "ACE Records_Ace_Records.png" },
+  { name: "Acuentre", file: "Acuentre_Acuentre.png" },
+  { name: "Agise", file: "agise_AgiseRujdiRegular.png" },
+  { name: "Anger Styles", file: "Anger Styles_AngerStyles.png" },
+  { name: "Armagist", file: "Armagist Regular_armagist.png" },
+  { name: "Asinges", file: "Asinges Regular_Asinges.png" },
+  { name: "Auriga", file: "Auriga_Auriga-BF657ea7a30d095.png" },
+  { name: "Auvelamerde", file: "AUVELAMERDE_Auvelamerde.png" },
+  { name: "Avalen Rekas", file: "Avalen Rekas_AvalenRekasRegular-ZVZa8.png" },
+  { name: "Bangilan", file: "Bangilan_Bangilan.png" },
+  { name: "Baroneys", file: "Baroneys_BaroneysTextured.png" },
+  { name: "Bemdayni", file: "Bemdayni_bemdayni-e9jgp.png" },
+  { name: "Betchers", file: "Betchers_Betchers.png" },
+  { name: "Beyond Wonderland", file: "Beyond Wonderland_Beyond Wonderland.png" },
+  { name: "Black Saviour", file: "black saviour_Black Savior.png" },
+  { name: "Black Skate", file: "Black Skate_Black Skate.png" },
+  { name: "Blackburr", file: "Blackburr_Blackburr.png" },
+  { name: "Blackcat", file: "Blackcat_TcblackcatRegular-pgZjd.png" },
+  { name: "Black Chancery", file: "BlackChancery_BLKCHCRY.png" },
+  { name: "Bleeding Cowboys", file: "Bleeding cowboys_Bleeding_Cowboys.png" },
+  { name: "Blood of Dracula", file: "Blood of Dracula_Bloodrac.png" },
+  { name: "Bristol Maver", file: "Bristol maver_BristolMaverRegular-ow0P0.png" },
+  { name: "Brotherhood Script", file: "Brotherhood Script_Brotherhood_Script.png" },
+  { name: "Brotherhood", file: "Brotherhood_Brotherhood.png" },
+  { name: "Butter Haunted", file: "Butter Haunted_Butter Haunted (1).png" },
+  { name: "C.S Bergamot", file: "C.S Bergamot_csbergamot-regular.png" },
+  { name: "Chappel Text", file: "Chappel Text_Chappel-Text.png" },
+  { name: "Charming", file: "charming_CHARMING.png" },
+  { name: "Circus Age", file: "circus age_Circus-Age.png" },
+  { name: "Cloister Black", file: "Cloister Black_CloisterBlack.png" },
+  { name: "Curseyt", file: "Curseyt_Curseyt-drq1g.png" },
+  { name: "Daisuky Fancy", file: "Daisuky Fancy_DaisukyFancy-gxp71.png" },
+  { name: "Dark Angeles", file: "Dark Angeles_dark-angels.regular.png" },
+  { name: "Death Crow", file: "DEATH CROW_DEATHCROW.png" },
+  { name: "Death Devil", file: "DEATH DEVIL_Death_Devil.png" },
+  { name: "Diploma", file: "Diploma regular_diploma.png" },
+  { name: "Dirt 2 Soulstalker", file: "Dirt 2 soulstalker_dirt2_soulstalker.png" },
+  { name: "Distropiax", file: "Distropiax_Distropiax-WpYMA.png" },
+  { name: "Etherion", file: "ETHERION_Etherion FREE.png" },
+  { name: "Faith", file: "Faith Regular_BelongFaithRegular-nRJJM.png" },
+  { name: "Familia", file: "Familia_Familia.png" },
+  { name: "Feathergraphy", file: "Feathergraphy_FeathergraphyDecoration-BXYx.png" },
+  { name: "Fiolex Mephisto", file: "FIOLEX MEPHISTO_Fiolex_Mephisto.png" },
+  { name: "Firwaen", file: "Firwaen_FIRWAENpersonaluse.png" },
+  { name: "Forsaken Emperor", file: "ForsakenEmper_Forsaken Emperor.png" },
+  { name: "Frankenstein", file: "Frankenstein_FRNKSTNN.png" },
+  { name: "Gorillabeer", file: "Gorillabeer Gorillabeerbase_Gorillabeer-Gorillabeerbase.png" },
+  { name: "Gothical", file: "gothical_Gothical.png" },
+  { name: "Grusskarten Gotisch", file: "Grusskarten Gotisch_GrusskartenGotisch.png" },
+  { name: "Hacjiuza", file: "Hacjiuza_Hacjiuza_Dirty.png" },
+  { name: "Hathama", file: "Hathama_Hathama-XGVEg.png" },
+  { name: "Hostgard", file: "Hostgard_HostgardPersonalUse-JpmZB.png" },
+  { name: "Jocker", file: "JOCKER_Jocker Extrude Right.png" },
+  { name: "Justify", file: "Justify_Justify.png" },
+  { name: "Kingthings", file: "Kingthings_KingthingsSpikeless-lKPZ.png" },
+  { name: "Lethal", file: "LETHAL_lethal-injector-regular.png" },
+  { name: "Living Stone", file: "living stone_Livingstone.png" },
+  { name: "Lordish", file: "Lordish_Lordish-Regular.png" },
+  { name: "Markingmate", file: "Markingmate_markingmatepersonaluse-2oo9e.png" },
+  { name: "Metal Macabre", file: "Metal macabre_MetalFest.png" },
+  { name: "Metal Thorn", file: "Metal Thorn_metalthornregular-0w43g.png" },
+  { name: "Monika", file: "Monika_Monika.png" },
+  { name: "Monk", file: "MONK_Monk-Gothic.png" },
+  { name: "Monolith", file: "Monolith-Regular.png" },
+  { name: "Nestcology", file: "NESTCOLOGY_Nestcology.png" },
+  { name: "Nortnoh", file: "Nortnoh_NortnohRegular-8MEPA.png" },
+  { name: "Old English", file: "old english_OldeEnglish.png" },
+  { name: "Perfect Signature", file: "perfect signature_perfect-signature.png" },
+  { name: "Rampage Monoline", file: "Rampage Monoline_RampageMonoline-Rounded.png" },
+  { name: "Rebute", file: "REBUTE_Rebute.png" },
+  { name: "Red Royale", file: "Red Royale_Red Royale.png" },
+  { name: "Redsniper", file: "Redsniper_Redsniper.png" },
+  { name: "Respective", file: "Respective_Respective_2.0.png" },
+  { name: "Retro Signature", file: "Retro Signature_RetroSignature.png" },
+  { name: "Rooters", file: "Rooters_Rooters.png" },
+  { name: "Scarbes", file: "Scarbes_Scarbes.png" },
+  { name: "Shadowed Black", file: "Shadowed Black_Shadowed_Black.png" },
+  { name: "Shiny Kage", file: "Shiny kage_Shiny kage.png" },
+  { name: "Single Ghost", file: "Single Ghost_SingleGhost regular.png" },
+  { name: "Snakefangs", file: "snakefangs_SnakeFangs FREE.png" },
+  { name: "Soulside Betrayed", file: "Soulside Betrayed_SoulsideBetrayed-3lazX.png" },
+  { name: "Stay Classy", file: "Stay Classy_Stay Classy SLDT.png" },
+  { name: "Taylor Gothic", file: "Taylor Gothic_TaylorGothic.png" },
+  { name: "The Amazing Spiderman", file: "The Amazing Spiderman_The_Amazing_Spider-Man.png" },
+  { name: "The Crow Shadow", file: "The Crow Shadow_TheCrowShadow.png" },
+  { name: "The Lastring", file: "The Lastring_TheLastring-DOLZW.png" },
+  { name: "Thousand Familia", file: "Thousand familia_Thousand Familia Regular.png" },
+  { name: "Throwing Axes", file: "Throwing axes_ThrowingAxes.png" },
+  { name: "Unquiet Spirits", file: "UNQUIET SPIRITS_Unquiet_Spirits.png" },
+  { name: "Wilson Wells", file: "Wilson wells_Wilson wells.png" },
+  { name: "Wishmf", file: "Wishmf_WishMF.png" },
+  { name: "Zepplines", file: "Zepplines_Zepplines.png" },
+  { name: "Zoombie Holocaust", file: "Zoombie Holocaust_Zombie_Holocaust.png" },
+]
 
-const ChatBot = () => {
-  const [input, setInput] = useState('');
-  const [model, setModel] = useState<string>(models[0].value);
-  const [webSearch, setWebSearch] = useState(false);
-  const [artifactView, setArtifactView] = useState<'preview' | 'code' | 'plan'>('preview');
-  const { messages, sendMessage, status, regenerate } = useChat();
-  const handleSubmit = (message: PromptInputMessage) => {
-    const hasText = Boolean(message.text);
-    const hasAttachments = Boolean(message.files?.length);
-    if (!(hasText || hasAttachments)) {
-      return;
-    }
-    sendMessage(
-      { 
-        text: message.text || 'Sent with attachments',
-        files: message.files 
-      },
-      {
-        body: {
-          model: model,
-          webSearch: webSearch,
-        },
-      },
-    );
-    setInput('');
-  };
+function LabelWithTooltip({ id, label, tooltip }: { id?: string, label: string, tooltip: string }) {
   return (
-    <SidebarProvider className="flex flex-col">
-      <div className="flex flex-1 h-screen">
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-              <SidebarTrigger className="-ml-1" />
-              <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem>
-                    <BreadcrumbLink href="#">Chat</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>AI Assistant</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            </header>
-            <ResizablePanelGroup direction="horizontal" className="h-full w-full">
-              <ResizablePanel defaultSize={50}>
-                <div className="flex flex-col h-full">
-          <Conversation className="h-full">
-          <ConversationContent>
-            {messages.map((message) => (
-              <div key={message.id}>
-                {message.role === 'assistant' && message.parts.filter((part) => part.type === 'source-url').length > 0 && (
-                  <Sources>
-                    <SourcesTrigger
-                      count={
-                        message.parts.filter(
-                          (part) => part.type === 'source-url',
-                        ).length
-                      }
-                    />
-                    {message.parts.filter((part) => part.type === 'source-url').map((part, i) => (
-                      <SourcesContent key={`${message.id}-${i}`}>
-                        <Source
-                          key={`${message.id}-${i}`}
-                          href={part.url}
-                          title={part.url}
-                          className="break-all"
-                        />
-                      </SourcesContent>
+    <div className="flex items-center gap-2">
+      <Label htmlFor={id}>{label}</Label>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
+        </PopoverTrigger>
+        <PopoverContent className="w-auto max-w-xs text-sm">
+          <p>{tooltip}</p>
+        </PopoverContent>
+      </Popover>
+    </div>
+  )
+}
+
+
+export default function Home() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [generatedImages, setGeneratedImages] = useState<string[]>([])
+  
+  // Share State
+  const [shareDialogOpen, setShareDialogOpen] = useState(false)
+  const [shareFile, setShareFile] = useState<File | null>(null)
+  const [shareUrl, setShareUrl] = useState("")
+
+  // Form State
+  const [prompt, setPrompt] = useState("")
+  const [fontPreviewOpen, setFontPreviewOpen] = useState(false)
+  const [selectedFont, setSelectedFont] = useState<typeof FONT_GALLERY[0] | null>(null)
+
+  const handleGenerate = async () => {
+    if (isLoading) return // Prevent double clicks
+    
+    if (!prompt.trim()) {
+      toast.error("Please enter a prompt to generate an image")
+      return
+    }
+
+    setIsLoading(true)
+    setGeneratedImages([])
+
+    const formData = new FormData()
+    formData.append("prompt", prompt)
+
+    const result = await generateImage(formData)
+
+    if (result.success && result.output) {
+      setGeneratedImages(Array.isArray(result.output) ? (result.output as string[]) : [result.output as string])
+    } else {
+      console.error(result.error)
+      toast.error(result.error || "Failed to generate image. Please try again.")
+    }
+    setIsLoading(false)
+  }
+
+  const handleDownload = async (url: string, index: number) => {
+    try {
+      const filename = `generated-image-${index + 1}.webp`
+      const response = await fetch(`/api/download?url=${encodeURIComponent(url)}&filename=${filename}`)
+      if (!response.ok) throw new Error('Network response was not ok')
+      
+      const blob = await response.blob()
+      const blobUrl = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = blobUrl
+      link.download = filename
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(blobUrl)
+      toast.success("Image downloaded successfully")
+    } catch (error) {
+      console.error('Download failed:', error)
+      toast.error("Download failed. Please try again.")
+    }
+  }
+
+  const handleShare = async (url: string, index: number) => {
+    const filename = `generated-image-${index + 1}.webp`
+    setShareUrl(url)
+    
+      if (navigator.canShare && navigator.canShare({ files: [new File([], 'test.png')] })) {
+        toast.info("Preparing image for sharing...")
+        
+        try {
+          const response = await fetch(`/api/download?url=${encodeURIComponent(url)}&filename=${filename}`)
+          if (response.ok) {
+            const blob = await response.blob()
+            const file = new File([blob], filename, { type: blob.type })
+            setShareFile(file)
+            setShareDialogOpen(true)
+            return
+          }
+        } catch (error) {
+          console.warn("File preparation failed", error)
+        }
+      }
+
+    // Fallback to Link Sharing immediately if file sharing isn't supported or failed
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'TaTTTy AI Generation',
+          text: 'Check out this image I generated with GoKAnI AI!',
+          url: url
+        })
+        toast.success("Shared link successfully")
+        return
+      }
+    } catch (error) {
+      console.warn("Link sharing failed", error)
+    }
+
+    // Fallback to Clipboard
+    try {
+      await navigator.clipboard.writeText(url)
+      toast.info("Sharing failed, link copied to clipboard instead!")
+    } catch {
+      toast.error("Failed to share. Try downloading instead.")
+    }
+  }
+
+  const executeShare = async () => {
+    if (!shareFile) return
+    
+    try {
+      await navigator.share({
+        title: 'GoKAnI AI Generation',
+        text: 'Check out this image I generated with GoKAnI AI!',
+        files: [shareFile]
+      })
+      toast.success("Shared image successfully")
+      setShareDialogOpen(false)
+    } catch (error) {
+      console.warn("Share execution failed", error)
+      
+      // If user cancelled, just close dialog
+      if (error instanceof Error && error.name === 'AbortError') {
+        setShareDialogOpen(false)
+        return
+      }
+
+      // Fallback to link sharing
+      if (shareUrl) {
+        try {
+          await navigator.share({
+            title: 'GoKAnI AI Generation',
+            text: 'Check out this image I generated with GoKAnI AI!',
+            url: shareUrl
+          })
+          setShareDialogOpen(false)
+          return
+        } catch {
+           // ignore
+        }
+      }
+      
+      toast.error("Sharing failed. Try downloading instead.")
+      setShareDialogOpen(false)
+    }
+  }
+
+  const slides = generatedImages.map((src) => ({
+    src,
+    width: 1024,
+    height: 1024,
+  }))
+
+  return (
+    <div className="flex flex-col w-full">
+      <div className="container mx-auto py-10 px-4 space-y-12 max-w-6xl">
+        
+        <div className="text-center space-y-4 mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+            Design Your Next Tattoo
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Please be descriptive and thorough with your prompt. Mention the <span className="text-foreground font-medium">style</span> and <span className="text-foreground font-medium">colors</span> you want—for example: 
+            <span className="italic text-foreground"> &quot;traditional style, bold lines, black and grey&quot;</span> or 
+            <span className="italic text-foreground"> &quot;realistic portrait, vibrant colors, fine detail&quot;</span>.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6">
+        <Card className="h-full border-2">
+          <CardContent className="space-y-4 pt-6">
+            <div className="space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <LabelWithTooltip
+                  id="prompt"
+                  label="Prompt"
+                  tooltip="Prompt for generated image."
+                />
+              </div>
+              <Textarea
+                id="prompt"
+                placeholder="Enter your prompt here..."
+                className="h-24"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+              />
+            </div>
+
+            <Separator className="my-2" />
+
+            <div className="space-y-6">
+              <div className="flex flex-col gap-2">
+                <LabelWithTooltip
+                  id="fonts"
+                  label="Select a Font Style"
+                  tooltip="Click a font to add it to your prompt."
+                />
+                <div className="relative w-full overflow-x-auto pb-4 scrollbar-hide">
+                  <div className="grid grid-rows-2 grid-flow-col gap-6 min-w-max px-1 pt-2.5">
+                    {FONT_GALLERY.map((font, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex flex-col gap-2 w-72 cursor-pointer group"
+                        onClick={() => {
+                          const newPrompt = prompt.trim() 
+                            ? `${prompt}, ${font.name} font style`
+                            : `${font.name} font style`
+                          setPrompt(newPrompt)
+                          toast.info(`Added ${font.name} style to prompt`)
+                        }}
+                      >
+                        <div className="aspect-video overflow-hidden rounded-xl border-2 border-muted transition-all group-hover:border-primary group-hover:shadow-lg bg-white/5 relative">
+                          <img 
+                            src={`/font-gal/${font.file}`} 
+                            alt={font.name}
+                            className="h-full w-full object-contain p-2"
+                          />
+                          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Button
+                              variant="secondary"
+                              size="icon"
+                              className="h-8 w-8 rounded-full shadow-md"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setLightboxIndex(idx);
+                                setFontPreviewOpen(true);
+                                setSelectedFont(font);
+                              }}
+                            >
+                              <Sparkles className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                        <span className="text-sm font-semibold text-center truncate px-1">
+                          {font.name}
+                        </span>
+                      </div>
                     ))}
-                  </Sources>
-                )}
-                {message.parts.map((part, i) => {
-                  switch (part.type) {
-                    case 'text':
-                      return (
-                        <Message key={`${message.id}-${i}`} from={message.role}>
-                          <MessageContent>
-                            <MessageResponse>
-                              {part.text}
-                            </MessageResponse>
-                          </MessageContent>
-                          {message.role === 'assistant' && i === messages.length - 1 && (
-                            <MessageActions>
-                <MessageAction
-                  onClick={() => regenerate()}
-                  label="Retry"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="flex justify-center">
+        <Button 
+          size="lg" 
+          className={cn(
+            "w-full max-w-md text-3xl py-8 h-auto transition-transform active:scale-95",
+            isLoading && "opacity-50 cursor-not-allowed active:scale-100"
+          )}
+          onClick={handleGenerate}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-3 h-8 w-8 animate-spin" />
+              CREATING...
+            </>
+          ) : (
+            <>
+              <Sparkles className="mr-3 h-8 w-8" />
+              CREATE
+              <Sparkles className="ml-3 h-8 w-8" />
+            </>
+          )}
+        </Button>
+      </div>
+
+      <Separator />
+      
+      <div className="flex flex-col items-center pb-12">
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center space-y-4 py-12">
+            <Loader2 className="h-12 w-12 animate-spin text-muted-foreground" />
+            <p className="text-muted-foreground">Creating your masterpiece...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            {generatedImages.map((src, i) => (
+              <div key={i} className="flex flex-col gap-3 group">
+                <div 
+                  className="relative rounded-xl overflow-hidden flex items-center justify-center w-full border border-border/50 hover:border-primary/50 transition-all duration-300 cursor-pointer aspect-square bg-muted/20"
+                  onClick={() => {
+                    setLightboxIndex(i)
+                    setLightboxOpen(true)
+                  }}
                 >
-                  <RefreshCcwIcon className="size-3" aria-hidden="true" />
-                </MessageAction>
-                <MessageAction
-                  onClick={() =>
-                    navigator.clipboard.writeText(part.text)
-                  }
-                  label="Copy"
-                >
-                  <CopyIcon className="size-3" aria-hidden="true" />
-                </MessageAction>
-                <OpenIn query={part.text}>
-                  <OpenInTrigger />
-                  <OpenInContent>
-                    <OpenInLabel>Share this response</OpenInLabel>
-                    <OpenInChatGPT />
-                    <OpenInClaude />
-                    <OpenInSeparator />
-                    <OpenInScira />
-                    <OpenInv0 />
-                    <OpenInCursor />
-                  </OpenInContent>
-                </OpenIn>
-                            </MessageActions>
-                          )}
-                        </Message>
-                      );
-                    case 'reasoning':
-                      return (
-                        <ChainOfThought key={`${message.id}-${i}`}>
-                          <ChainOfThoughtHeader>
-                            Chain of Thought
-                          </ChainOfThoughtHeader>
-                          <ChainOfThoughtContent>
-                            <ChainOfThoughtStep label="Reasoning Process">
-                              {part.text}
-                            </ChainOfThoughtStep>
-                          </ChainOfThoughtContent>
-                        </ChainOfThought>
-                      );
-                    case 'tool-call':
-                      return (
-                        <Tool key={`${message.id}-${i}`}>
-                          <ToolHeader
-                            title={part.title || 'Tool Call'}
-                            type="tool-call"
-                            state="output-available"
-                          />
-                          <ToolContent>
-                            <ToolInput input={part.input} />
-                          </ToolContent>
-                        </Tool>
-                      );
-                    case 'tool-result':
-                      return (
-                        <Tool key={`${message.id}-${i}`}>
-                          <ToolHeader
-                            title={part.title || 'Tool Result'}
-                            type="tool-result"
-                            state="output-available"
-                          />
-                          <ToolContent>
-                            <ToolOutput output={part.output} errorText={part.errorText} />
-                          </ToolContent>
-                        </Tool>
-                      );
-                    default:
-                      return null;
-                  }
-                })}
+                  <img 
+                    src={src} 
+                    alt={`Generated image ${i + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                </div>
+                <div className="flex gap-2 w-full">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="flex-1 h-9 rounded-lg"
+                    onClick={() => handleDownload(src, i)}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Save
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="flex-1 h-9 rounded-lg"
+                    onClick={() => handleShare(src, i)}
+                  >
+                    <Share2 className="mr-2 h-4 w-4" />
+                    Share
+                  </Button>
+                  {/* Edit feature removed for now as workspace state is not defined */}
+                </div>
               </div>
             ))}
-            {status === 'submitted' && <Shimmer>Loading response…</Shimmer>}
-          </ConversationContent>
-          <ConversationScrollButton />
-        </Conversation>
-
-          <PromptInput onSubmit={handleSubmit} className="mt-4" globalDrop multiple>
-            <PromptInputHeader>
-              <PromptInputAttachments>
-                {(attachment) => <PromptInputAttachment data={attachment} />}
-              </PromptInputAttachments>
-            </PromptInputHeader>
-            <PromptInputBody>
-              <PromptInputTextarea
-                onChange={(e) => setInput(e.target.value)}
-                value={input}
-                autoComplete="off"
-                spellCheck={false}
-                aria-label="Type your message here"
-              />
-            </PromptInputBody>
-            <PromptInputFooter>
-              <PromptInputTools>
-                <PromptInputActionMenu>
-                  <PromptInputActionMenuTrigger />
-                  <PromptInputActionMenuContent>
-                    <PromptInputActionAddAttachments />
-                  </PromptInputActionMenuContent>
-                </PromptInputActionMenu>
-                <PromptInputButton
-                  variant={webSearch ? 'default' : 'ghost'}
-                  onClick={() => setWebSearch(!webSearch)}
-                  aria-label={webSearch ? 'Disable web search' : 'Enable web search'}
-                  aria-pressed={webSearch}
-                >
-                  <GlobeIcon size={16} aria-hidden="true" />
-                  <span>Search</span>
-                </PromptInputButton>
-                <ModelSelector>
-                  <ModelSelectorTrigger asChild>
-                    <Button variant="outline" size="lg" className="justify-start px-4 py-3 h-12 text-base">
-                      {models.find(m => m.value === model)?.name || 'Select Model'}
-                    </Button>
-                  </ModelSelectorTrigger>
-                  <ModelSelectorContent className="w-96 p-0">
-                    <ModelSelectorInput placeholder="Search models..." className="h-14 px-4 text-base" />
-                    <ModelSelectorList className="max-h-96">
-                      <ModelSelectorEmpty className="py-8 text-center text-base">No models found.</ModelSelectorEmpty>
-                      {models.map((modelItem) => (
-                        <ModelSelectorItem
-                          key={modelItem.value}
-                          value={modelItem.name}
-                          onSelect={() => setModel(modelItem.value)}
-                          className="flex items-center justify-between px-4 py-4 hover:bg-accent cursor-pointer text-base"
-                        >
-                          <ModelSelectorName className="flex-1 text-left font-medium">{modelItem.name}</ModelSelectorName>
-                          <ModelSelectorLogoGroup className="flex-shrink-0 ml-4">
-                            {modelItem.providers.slice(0, 4).map((provider) => (
-                              <ModelSelectorLogo key={provider} provider={provider} className="size-5" />
-                            ))}
-                          </ModelSelectorLogoGroup>
-                        </ModelSelectorItem>
-                      ))}
-                    </ModelSelectorList>
-                  </ModelSelectorContent>
-                </ModelSelector>
-              </PromptInputTools>
-            <PromptInputSubmit disabled={!input && !status} status={status} />
-          </PromptInputFooter>
-        </PromptInput>
-        </div>
-                </ResizablePanel>
-                <ResizableHandle withHandle />
-                <ResizablePanel defaultSize={25}>
-                  <div className="h-full">
-                    <Context usedTokens={1500} maxTokens={8000}>
-                      <ContextTrigger />
-                      <ContextContent>
-                        <ContextContentHeader />
-                        <ContextContentBody>
-                          <ContextInputUsage />
-                          <ContextOutputUsage />
-                          <ContextReasoningUsage />
-                        </ContextContentBody>
-                        <ContextContentFooter />
-                      </ContextContent>
-                    </Context>
-                  </div>
-                </ResizablePanel>
-                <ResizableHandle withHandle />
-                <ResizablePanel defaultSize={25}>
-                  <div className="h-full flex flex-col">
-                    <Artifact className="flex-1 m-4">
-                      <ArtifactHeader>
-                        <ArtifactTitle>Generated Webpage</ArtifactTitle>
-                        <ArtifactActions>
-                          <Button
-                            variant={artifactView === 'preview' ? 'default' : 'ghost'}
-                            size="sm"
-                            onClick={() => setArtifactView('preview')}
-                          >
-                            Preview
-                          </Button>
-                          <Button
-                            variant={artifactView === 'code' ? 'default' : 'ghost'}
-                            size="sm"
-                            onClick={() => setArtifactView('code')}
-                          >
-                            Code
-                          </Button>
-                          <Button
-                            variant={artifactView === 'plan' ? 'default' : 'ghost'}
-                            size="sm"
-                            onClick={() => setArtifactView('plan')}
-                          >
-                            Plan
-                          </Button>
-                          <ArtifactAction tooltip="Download HTML" icon={CopyIcon} />
-                        </ArtifactActions>
-                      </ArtifactHeader>
-                      <ArtifactContent className="h-full">
-                        {artifactView === 'preview' ? (
-                          <WebPreview className="h-full">
-                            <WebPreviewNavigation>
-                              <WebPreviewUrl />
-                            </WebPreviewNavigation>
-                            <WebPreviewBody className="flex-1" />
-                          </WebPreview>
-                        ) : artifactView === 'plan' ? (
-                          <Plan className="h-full">
-                            <div className="p-4">
-                              <h3 className="font-medium text-sm mb-2">Planning Interface</h3>
-                              <p className="text-muted-foreground text-sm">
-                                AI planning and workflow management interface.
-                              </p>
-                            </div>
-                          </Plan>
-                        ) : (
-                          <CodeBlock
-                            code=""
-                            language="html"
-                          >
-                            <CodeBlockCopyButton />
-                          </CodeBlock>
-                        )}
-                      </ArtifactContent>
-                    </Artifact>
-                  </div>
-                </ResizablePanel>
-              </ResizablePanelGroup>
-            </SidebarInset>
           </div>
-        </SidebarProvider>
-    );
-  };
-export default ChatBot;
+        )}
+      </div>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        index={lightboxIndex}
+        slides={slides}
+      />
+
+      <Dialog open={fontPreviewOpen} onOpenChange={setFontPreviewOpen}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>{selectedFont?.name}</DialogTitle>
+          </DialogHeader>
+          <div className="aspect-video relative rounded-lg overflow-hidden border bg-muted/20">
+            {selectedFont && (
+              <img 
+                src={`/font-gal/${selectedFont.file}`} 
+                alt={selectedFont.name}
+                className="w-full h-full object-contain p-4"
+              />
+            )}
+          </div>
+          <DialogFooter>
+            <Button 
+              className="w-full"
+              onClick={() => {
+                if (selectedFont) {
+                  const newPrompt = prompt.trim() 
+                    ? `${prompt}, ${selectedFont.name} font style`
+                    : `${selectedFont.name} font style`
+                  setPrompt(newPrompt)
+                  toast.info(`Added ${selectedFont.name} style to prompt`)
+                }
+                setFontPreviewOpen(false)
+              }}
+            >
+              Select this font
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Ready to Share</DialogTitle>
+            <DialogDescription>
+              Your image has been prepared. Click the button below to share it.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setShareDialogOpen(false)}>Cancel</Button>
+            <Button onClick={executeShare}>Share Now</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      </div>
+    </div>
+  )
+}
