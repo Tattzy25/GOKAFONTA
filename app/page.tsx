@@ -1,14 +1,15 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Info, Loader2, Download, Sparkles, Share2, Edit } from "lucide-react"
+import { Info, Loader2, Download, Sparkles, Share2, Edit, X } from "lucide-react"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
 import { toast } from "sonner"
@@ -152,12 +153,40 @@ export default function Home() {
   const [prompt, setPrompt] = useState("")
   const [fontPreviewOpen, setFontPreviewOpen] = useState(false)
   const [selectedFont, setSelectedFont] = useState<typeof FONT_GALLERY[0] | null>(null)
+  const [highlightedFont, setHighlightedFont] = useState<string | null>(null)
+
+  // Iframe height management
+  const containerRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const reportHeight = () => {
+      if (containerRef.current) {
+        const height = containerRef.current.scrollHeight
+        window.parent.postMessage({ type: 'setHeight', height }, '*')
+      }
+    }
+
+    const observer = new ResizeObserver(reportHeight)
+    if (containerRef.current) observer.observe(containerRef.current)
+    
+    // Also report on image load
+    window.addEventListener('load', reportHeight)
+    
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('load', reportHeight)
+    }
+  }, [generatedImages, isLoading])
 
   const handleGenerate = async () => {
     if (isLoading) return // Prevent double clicks
     
+    if (prompt.trim().length > 20) {
+      toast.error("Maximum 20 characters allowed")
+      return
+    }
+
     if (!prompt.trim()) {
-      toast.error("Please enter a prompt to generate an image")
+      toast.error("Please enter a message to generate an image")
       return
     }
 
@@ -165,7 +194,10 @@ export default function Home() {
     setGeneratedImages([])
 
     const formData = new FormData()
-    formData.append("prompt", prompt)
+    const finalPrompt = highlightedFont 
+      ? `${prompt}, ${highlightedFont} font style`
+      : prompt
+    formData.append("prompt", finalPrompt)
 
     const result = await generateImage(formData)
 
@@ -292,38 +324,52 @@ export default function Home() {
   }))
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="container mx-auto py-10 px-4 space-y-12 max-w-6xl">
+    <div className="flex flex-col w-full" ref={containerRef}>
+      <div className="container mx-auto py-6 sm:py-10 px-2 sm:px-4 space-y-8 sm:space-y-12 max-w-6xl">
         
         <div className="text-center space-y-4 mb-8">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
             Design Your Next Tattoo
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Please be descriptive and thorough with your prompt. Mention the <span className="text-foreground font-medium">style</span> and <span className="text-foreground font-medium">colors</span> you want—for example: 
+            Please be descriptive with your <span className="text-foreground font-medium">Message</span>. Mention the <span className="text-foreground font-medium">style</span> and <span className="text-foreground font-medium">colors</span> you want—for example: 
             <span className="italic text-foreground"> &quot;traditional style, bold lines, black and grey&quot;</span> or 
             <span className="italic text-foreground"> &quot;realistic portrait, vibrant colors, fine detail&quot;</span>.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:gap-6">
-        <Card className="h-full border-2 rounded-xl sm:rounded-2xl">
-          <CardContent className="space-y-4 p-4 sm:pt-6">
+        <Card className="h-full border-2 rounded-lg sm:rounded-2xl">
+          <CardContent className="space-y-4 p-2 sm:p-4 sm:pt-6">
             <div className="space-y-2">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <LabelWithTooltip
                   id="prompt"
-                  label="Prompt"
-                  tooltip="Prompt for generated image."
+                  label="Message"
+                  tooltip="Enter a word, name, or short message to generate (Maximum 20 characters)."
                 />
               </div>
-              <Textarea
+              <Input
                 id="prompt"
-                placeholder="Enter your prompt here..."
-                className="h-24"
+                placeholder="Enter your message, name, or word..."
+                className="h-12 text-lg"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                maxLength={20}
               />
+              {highlightedFont && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80">
+                    {highlightedFont}
+                    <button 
+                      className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                      onClick={() => setHighlightedFont(null)}
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             <Separator className="my-2" />
@@ -333,27 +379,27 @@ export default function Home() {
                 <LabelWithTooltip
                   id="fonts"
                   label="Select a Font Style"
-                  tooltip="Click a font to add it to your prompt."
+                  tooltip="Click a font to add it to your message."
                 />
                 <div className="relative w-full -mx-4 px-4 overflow-x-auto pb-4 scrollbar-hide sm:mx-0 sm:px-0">
-                  <div className="grid grid-rows-2 grid-flow-col gap-4 sm:gap-6 min-w-max px-1 pt-2.5">
+                  <div className="grid grid-rows-2 grid-flow-col gap-2 sm:gap-6 min-w-max px-1 pt-2">
                     {FONT_GALLERY.map((font, idx) => (
                       <div 
                         key={idx} 
-                        className="flex flex-col gap-2 w-64 sm:w-72 cursor-pointer group"
+                        className="flex flex-col gap-1 w-48 sm:w-72 cursor-pointer group"
                         onClick={() => {
-                          const newPrompt = prompt.trim() 
-                            ? `${prompt}, ${font.name} font style`
-                            : `${font.name} font style`
-                          setPrompt(newPrompt)
-                          toast.info(`Added ${font.name} style to prompt`)
+                          setHighlightedFont(font.name)
+                          toast.info(`Selected ${font.name} font style`)
                         }}
                       >
-                        <div className="aspect-video overflow-hidden rounded-xl border-2 border-muted transition-all group-hover:border-primary group-hover:shadow-lg bg-white/5 relative">
+                        <div className={cn(
+                          "aspect-video overflow-hidden rounded-lg border-2 transition-all group-hover:border-primary group-hover:shadow-lg bg-white/5 relative",
+                          highlightedFont === font.name ? "border-primary ring-2 ring-primary ring-offset-2" : "border-muted"
+                        )}>
                           <img 
                             src={`/font-gal/${font.file}`} 
                             alt={font.name}
-                            className="h-full w-full object-contain p-2"
+                            className="h-full w-full object-contain p-0.5"
                           />
                           <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             <Button
@@ -371,7 +417,7 @@ export default function Home() {
                             </Button>
                           </div>
                         </div>
-                        <span className="text-sm font-semibold text-center truncate px-1">
+                        <span className="text-[10px] sm:text-sm font-semibold text-center truncate px-1">
                           {font.name}
                         </span>
                       </div>
@@ -488,11 +534,8 @@ export default function Home() {
               className="w-full"
               onClick={() => {
                 if (selectedFont) {
-                  const newPrompt = prompt.trim() 
-                    ? `${prompt}, ${selectedFont.name} font style`
-                    : `${selectedFont.name} font style`
-                  setPrompt(newPrompt)
-                  toast.info(`Added ${selectedFont.name} style to prompt`)
+                  setHighlightedFont(selectedFont.name)
+                  toast.info(`Selected ${selectedFont.name} font style`)
                 }
                 setFontPreviewOpen(false)
               }}
