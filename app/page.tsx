@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
+import { AnimatedButton } from "@/components/ui/animated-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -328,13 +329,11 @@ export default function Home() {
       <div className="container mx-auto py-6 sm:py-10 px-2 sm:px-4 space-y-8 sm:space-y-12 max-w-6xl">
         
         <div className="text-center space-y-4 mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Design Your Next Tattoo
+          <h1 className="text-3xl md:text-4xl font-black tracking-tighter uppercase italic font-[family-name:var(--font-rock-salt)]">
+            NAME YOUR INK
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Please be descriptive with your <span className="text-foreground font-medium">Message</span>. Mention the <span className="text-foreground font-medium">style</span> and <span className="text-foreground font-medium">colors</span> you want—for example: 
-            <span className="italic text-foreground"> &quot;traditional style, bold lines, black and grey&quot;</span> or 
-            <span className="italic text-foreground"> &quot;realistic portrait, vibrant colors, fine detail&quot;</span>.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium font-[family-name:var(--font-roboto-condensed)]">
+            Pick a font that hits different and drop your message. <span className="text-foreground">20 characters max.</span> No generic trash—just raw, real tattoo typography that speaks your truth.
           </p>
         </div>
 
@@ -431,28 +430,37 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center">
-        <Button 
-          size="lg" 
-          className={cn(
-            "w-full max-w-md text-3xl py-8 h-auto transition-transform active:scale-95",
-            isLoading && "opacity-50 cursor-not-allowed active:scale-100"
-          )}
+        <AnimatedButton
+          className="bg-green-500 text-white w-full max-w-md h-auto"
+          variant="default"
+          size="default"
+          glow={false}
+          textEffect="normal"
+          uppercase={true}
+          rounded="custom"
+          asChild={false}
+          hideAnimations={false}
+          shimmerColor="#39FF14"
+          shimmerSize="0.15em"
+          shimmerDuration="3s"
+          borderRadius="100px"
+          background="rgba(0, 0, 0, 1)"
           onClick={handleGenerate}
           disabled={isLoading}
         >
           {isLoading ? (
-            <>
+            <div className="flex items-center justify-center">
               <Loader2 className="mr-3 h-8 w-8 animate-spin" />
               CREATING...
-            </>
+            </div>
           ) : (
-            <>
+            <div className="flex items-center justify-center">
               <Sparkles className="mr-3 h-8 w-8" />
-              CREATE
+              CREATE FONT NOW
               <Sparkles className="ml-3 h-8 w-8" />
-            </>
+            </div>
           )}
-        </Button>
+        </AnimatedButton>
       </div>
 
       <Separator />

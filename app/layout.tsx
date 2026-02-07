@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Open_Sans, Rock_Salt, Roboto_Condensed } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
+  subsets: ["latin"],
+});
+
+const rockSalt = Rock_Salt({
+  variable: "--font-rock-salt",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const robotoCondensed = Roboto_Condensed({
+  variable: "--font-roboto-condensed",
   subsets: ["latin"],
 });
 
@@ -46,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} antialiased`}
+        className={`${openSans.variable} ${rockSalt.variable} ${robotoCondensed.variable} antialiased`}
       >
         {children}
         <Toaster />
