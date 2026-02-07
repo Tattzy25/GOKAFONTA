@@ -10,14 +10,15 @@ const openSans = Open_Sans({
 
 
 export const metadata: Metadata = {
-  title: "GoKAnI AI - Image Generator",
-  description: "Generate amazing images with GoKAnI AI (Flux). A powerful AI image generation tool powered by Replicate.",
-  keywords: ["AI", "Image Generator", "Flux", "Replicate", "GoKAnI", "Art"],
-  authors: [{ name: "GoKAnI Team" }],
+  metadataBase: new URL("https://fonts.tattty.com"),
+  title: "TaTTTy Fonts - AI Tattoo Font Generator",
+  description: "Generate amazing tattoo designs with TaTTTy Fonts. A powerful AI tool for tattoo artists.",
+  keywords: ["AI", "Tattoo", "Fonts", "Generator", "TaTTTy"],
+  authors: [{ name: "TaTTTy Team" }],
   openGraph: {
-    title: "GoKAnI AI - Image Generator",
-    description: "Generate amazing images with GoKAnI AI (Flux)",
-    siteName: "GoKAnI AI",
+    title: "TaTTTy Fonts - AI Tattoo Font Generator",
+    description: "Generate amazing tattoo designs with TaTTTy Fonts",
+    siteName: "TaTTTy Fonts",
     images: [
       {
         url: "/gokanix1200x630.png",
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GoKAnI AI - Image Generator",
-    description: "Generate amazing images with GoKAnI AI (Flux)",
+    title: "TaTTTy Fonts - AI Tattoo Font Generator",
+    description: "Generate amazing tattoo designs with TaTTTy Fonts",
     images: ["/gokanix1200x630.png"],
   },
 };

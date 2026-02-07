@@ -225,10 +225,10 @@ export default function Home() {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: 'TaTTTy AI Generation',
-          text: 'Check out this image I generated with GoKAnI AI!',
-          url: url
-        })
+        title: 'TaTTTy Fonts AI Generation',
+        text: 'Check out this image I generated with TaTTTy Fonts AI!',
+        url: url
+      })
         toast.success("Shared link successfully")
         return
       }
@@ -250,8 +250,8 @@ export default function Home() {
     
     try {
       await navigator.share({
-        title: 'GoKAnI AI Generation',
-        text: 'Check out this image I generated with GoKAnI AI!',
+        title: 'TaTTTy Fonts AI Generation',
+        text: 'Check out this image I generated with TaTTTy Fonts AI!',
         files: [shareFile]
       })
       toast.success("Shared image successfully")
@@ -269,8 +269,8 @@ export default function Home() {
       if (shareUrl) {
         try {
           await navigator.share({
-            title: 'GoKAnI AI Generation',
-            text: 'Check out this image I generated with GoKAnI AI!',
+            title: 'TaTTTy Fonts AI Generation',
+            text: 'Check out this image I generated with TaTTTy Fonts AI!',
             url: shareUrl
           })
           setShareDialogOpen(false)
