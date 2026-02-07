@@ -1,56 +1,56 @@
-# GoKAnI AI - Tattoo Design Studio
+# TaTTTy Fonts - AI Tattoo Font Generator
 
-GoKAnI AI is a professional AI-powered tattoo design application built with Next.js and powered by a custom Flux model via Replicate. It is designed to help artists and clients visualize their next masterpiece with high-fidelity tattoo concepts.
+TaTTTy Fonts is a professional AI-powered tattoo design application specialized in typography. It is built with Next.js and powered by a custom Flux model via Replicate, designed to help artists and clients visualize their next masterpiece with high-fidelity tattoo concepts and a wide range of specialized font styles.
 
 ## ✨ Features
 
--   **High-Impact Tattoo Generation:** Powered by a specialized Flux model (`tattty_4_all`) for authentic urban, traditional, and realistic tattoo styles.
--   **Internalized Settings:** All complex AI parameters (Steps, Guidance, Aspect Ratio) are handled internally to ensure consistent, high-quality results.
--   **Quad-Generation:** Every prompt generates 4 unique variations simultaneously.
--   **Image-to-Image & Editing:** Upload reference images for inspiration, or send a generated design back to the workspace for iterative refinement.
--   **Smart Downloads:** Direct download support for generated designs.
--   **Mobile-First Design:** Fully responsive UI, perfect for studio use on tablets or phones.
+- **Specialized Font Gallery:** Over 90 curated tattoo-style fonts that can be instantly applied to your prompt.
+- **High-Impact Tattoo Generation:** Powered by a specialized Flux model (`tattty_4_all`) for authentic urban, traditional, and realistic tattoo styles.
+- **Font Preview & Selection:** Interactive carousel to browse and preview fonts in detail before generating.
+- **Smart Downloads & Sharing:** Integrated support for downloading and sharing generated designs.
+- **Mobile-First Design:** Fully responsive UI, perfect for studio use on tablets or phones.
 
 ## 🛠️ Tech Stack
 
--   **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
--   **Language:** TypeScript
--   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
--   **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
--   **AI Provider:** [Replicate](https://replicate.com/)
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **AI Provider:** [Replicate](https://replicate.com/)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
--   Node.js 18+ installed
--   A [Replicate](https://replicate.com/) API Token
+- Node.js 18+ installed
+- pnpm (recommended)
+- A [Replicate](https://replicate.com/) API Token
 
 ### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/yourusername/goka.git
-    cd goka
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Tattzy25/GOKAFONTA.git
+   cd GOKAFONTA/goka
+   ```
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+2. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
 
-3.  **Set up Environment Variables:**
-    Create a `.env.local` file in the root directory and add your Replicate API token:
-    ```env
-    REPLICATE_API_TOKEN=your_token_here
-    ```
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the `goka` directory and add your Replicate API token:
+   ```env
+   REPLICATE_API_TOKEN=your_token_here
+   ```
 
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+4. **Run the development server:**
+   ```bash
+   pnpm dev
+   ```
 
-5.  Open [http://localhost:3000](http://localhost:3000) to start designing!
+5. Open [http://localhost:3000](http://localhost:3000) to start designing!
 
 ## 📄 License
 
