@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Info, Loader2, Download, Upload, X, Sparkles, Share2, Edit } from "lucide-react"
+import { Info, Loader2, Download, Sparkles, Share2, Edit } from "lucide-react"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
 import { toast } from "sonner"
@@ -21,6 +21,104 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+
+const FONT_GALLERY = [
+  { name: "Abbey Damn", file: "ABBEY DAMN_Font_Abbey_Dawn_by_loveinhoollywood.png" },
+  { name: "Abhinaya", file: "Abhinaya_ABHINAYA Free Version.png" },
+  { name: "Ace Records", file: "ACE Records_Ace_Records.png" },
+  { name: "Acuentre", file: "Acuentre_Acuentre.png" },
+  { name: "Agise", file: "agise_AgiseRujdiRegular.png" },
+  { name: "Anger Styles", file: "Anger Styles_AngerStyles.png" },
+  { name: "Armagist", file: "Armagist Regular_armagist.png" },
+  { name: "Asinges", file: "Asinges Regular_Asinges.png" },
+  { name: "Auriga", file: "Auriga_Auriga-BF657ea7a30d095.png" },
+  { name: "Auvelamerde", file: "AUVELAMERDE_Auvelamerde.png" },
+  { name: "Avalen Rekas", file: "Avalen Rekas_AvalenRekasRegular-ZVZa8.png" },
+  { name: "Bangilan", file: "Bangilan_Bangilan.png" },
+  { name: "Baroneys", file: "Baroneys_BaroneysTextured.png" },
+  { name: "Bemdayni", file: "Bemdayni_bemdayni-e9jgp.png" },
+  { name: "Betchers", file: "Betchers_Betchers.png" },
+  { name: "Beyond Wonderland", file: "Beyond Wonderland_Beyond Wonderland.png" },
+  { name: "Black Saviour", file: "black saviour_Black Savior.png" },
+  { name: "Black Skate", file: "Black Skate_Black Skate.png" },
+  { name: "Blackburr", file: "Blackburr_Blackburr.png" },
+  { name: "Blackcat", file: "Blackcat_TcblackcatRegular-pgZjd.png" },
+  { name: "Black Chancery", file: "BlackChancery_BLKCHCRY.png" },
+  { name: "Bleeding Cowboys", file: "Bleeding cowboys_Bleeding_Cowboys.png" },
+  { name: "Blood of Dracula", file: "Blood of Dracula_Bloodrac.png" },
+  { name: "Bristol Maver", file: "Bristol maver_BristolMaverRegular-ow0P0.png" },
+  { name: "Brotherhood Script", file: "Brotherhood Script_Brotherhood_Script.png" },
+  { name: "Brotherhood", file: "Brotherhood_Brotherhood.png" },
+  { name: "Butter Haunted", file: "Butter Haunted_Butter Haunted (1).png" },
+  { name: "C.S Bergamot", file: "C.S Bergamot_csbergamot-regular.png" },
+  { name: "Chappel Text", file: "Chappel Text_Chappel-Text.png" },
+  { name: "Charming", file: "charming_CHARMING.png" },
+  { name: "Circus Age", file: "circus age_Circus-Age.png" },
+  { name: "Cloister Black", file: "Cloister Black_CloisterBlack.png" },
+  { name: "Curseyt", file: "Curseyt_Curseyt-drq1g.png" },
+  { name: "Daisuky Fancy", file: "Daisuky Fancy_DaisukyFancy-gxp71.png" },
+  { name: "Dark Angeles", file: "Dark Angeles_dark-angels.regular.png" },
+  { name: "Death Crow", file: "DEATH CROW_DEATHCROW.png" },
+  { name: "Death Devil", file: "DEATH DEVIL_Death_Devil.png" },
+  { name: "Diploma", file: "Diploma regular_diploma.png" },
+  { name: "Dirt 2 Soulstalker", file: "Dirt 2 soulstalker_dirt2_soulstalker.png" },
+  { name: "Distropiax", file: "Distropiax_Distropiax-WpYMA.png" },
+  { name: "Etherion", file: "ETHERION_Etherion FREE.png" },
+  { name: "Faith", file: "Faith Regular_BelongFaithRegular-nRJJM.png" },
+  { name: "Familia", file: "Familia_Familia.png" },
+  { name: "Feathergraphy", file: "Feathergraphy_FeathergraphyDecoration-BXYx.png" },
+  { name: "Fiolex Mephisto", file: "FIOLEX MEPHISTO_Fiolex_Mephisto.png" },
+  { name: "Firwaen", file: "Firwaen_FIRWAENpersonaluse.png" },
+  { name: "Forsaken Emperor", file: "ForsakenEmper_Forsaken Emperor.png" },
+  { name: "Frankenstein", file: "Frankenstein_FRNKSTNN.png" },
+  { name: "Gorillabeer", file: "Gorillabeer Gorillabeerbase_Gorillabeer-Gorillabeerbase.png" },
+  { name: "Gothical", file: "gothical_Gothical.png" },
+  { name: "Grusskarten Gotisch", file: "Grusskarten Gotisch_GrusskartenGotisch.png" },
+  { name: "Hacjiuza", file: "Hacjiuza_Hacjiuza_Dirty.png" },
+  { name: "Hathama", file: "Hathama_Hathama-XGVEg.png" },
+  { name: "Hostgard", file: "Hostgard_HostgardPersonalUse-JpmZB.png" },
+  { name: "Jocker", file: "JOCKER_Jocker Extrude Right.png" },
+  { name: "Justify", file: "Justify_Justify.png" },
+  { name: "Kingthings", file: "Kingthings_KingthingsSpikeless-lKPZ.png" },
+  { name: "Lethal", file: "LETHAL_lethal-injector-regular.png" },
+  { name: "Living Stone", file: "living stone_Livingstone.png" },
+  { name: "Lordish", file: "Lordish_Lordish-Regular.png" },
+  { name: "Markingmate", file: "Markingmate_markingmatepersonaluse-2oo9e.png" },
+  { name: "Metal Macabre", file: "Metal macabre_MetalFest.png" },
+  { name: "Metal Thorn", file: "Metal Thorn_metalthornregular-0w43g.png" },
+  { name: "Monika", file: "Monika_Monika.png" },
+  { name: "Monk", file: "MONK_Monk-Gothic.png" },
+  { name: "Monolith", file: "Monolith-Regular.png" },
+  { name: "Nestcology", file: "NESTCOLOGY_Nestcology.png" },
+  { name: "Nortnoh", file: "Nortnoh_NortnohRegular-8MEPA.png" },
+  { name: "Old English", file: "old english_OldeEnglish.png" },
+  { name: "Perfect Signature", file: "perfect signature_perfect-signature.png" },
+  { name: "Rampage Monoline", file: "Rampage Monoline_RampageMonoline-Rounded.png" },
+  { name: "Rebute", file: "REBUTE_Rebute.png" },
+  { name: "Red Royale", file: "Red Royale_Red Royale.png" },
+  { name: "Redsniper", file: "Redsniper_Redsniper.png" },
+  { name: "Respective", file: "Respective_Respective_2.0.png" },
+  { name: "Retro Signature", file: "Retro Signature_RetroSignature.png" },
+  { name: "Rooters", file: "Rooters_Rooters.png" },
+  { name: "Scarbes", file: "Scarbes_Scarbes.png" },
+  { name: "Shadowed Black", file: "Shadowed Black_Shadowed_Black.png" },
+  { name: "Shiny Kage", file: "Shiny kage_Shiny kage.png" },
+  { name: "Single Ghost", file: "Single Ghost_SingleGhost regular.png" },
+  { name: "Snakefangs", file: "snakefangs_SnakeFangs FREE.png" },
+  { name: "Soulside Betrayed", file: "Soulside Betrayed_SoulsideBetrayed-3lazX.png" },
+  { name: "Stay Classy", file: "Stay Classy_Stay Classy SLDT.png" },
+  { name: "Taylor Gothic", file: "Taylor Gothic_TaylorGothic.png" },
+  { name: "The Amazing Spiderman", file: "The Amazing Spiderman_The_Amazing_Spider-Man.png" },
+  { name: "The Crow Shadow", file: "The Crow Shadow_TheCrowShadow.png" },
+  { name: "The Lastring", file: "The Lastring_TheLastring-DOLZW.png" },
+  { name: "Thousand Familia", file: "Thousand familia_Thousand Familia Regular.png" },
+  { name: "Throwing Axes", file: "Throwing axes_ThrowingAxes.png" },
+  { name: "Unquiet Spirits", file: "UNQUIET SPIRITS_Unquiet_Spirits.png" },
+  { name: "Wilson Wells", file: "Wilson wells_Wilson wells.png" },
+  { name: "Wishmf", file: "Wishmf_WishMF.png" },
+  { name: "Zepplines", file: "Zepplines_Zepplines.png" },
+  { name: "Zoombie Holocaust", file: "Zoombie Holocaust_Zombie_Holocaust.png" },
+]
 
 function LabelWithTooltip({ id, label, tooltip }: { id?: string, label: string, tooltip: string }) {
   return (
@@ -38,165 +136,6 @@ function LabelWithTooltip({ id, label, tooltip }: { id?: string, label: string, 
   )
 }
 
-function MultiImageUploadInput({
-  id,
-  values,
-  onChange,
-  label,
-  tooltip,
-  maxFiles = 4,
-}: {
-  id: string
-  values: string[]
-  onChange: (vals: string[], fileNames?: string[]) => void
-  label: string
-  tooltip: string
-  maxFiles?: number
-}) {
-  const [isDragging, setIsDragging] = useState(false)
-  const [localFileNames, setLocalFileNames] = useState<string[]>([])
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  const addFiles = (files: FileList | File[]) => {
-    const fileArray = Array.from(files)
-      .filter((f) => f.type.startsWith("image/"))
-      .slice(0, Math.max(0, maxFiles - values.length))
-
-    if (fileArray.length === 0) return
-
-    const readers = fileArray.map(
-      (file) =>
-        new Promise<{ dataUrl: string; name: string }>((resolve, reject) => {
-          const reader = new FileReader()
-          reader.onloadend = () => resolve({ dataUrl: reader.result as string, name: file.name })
-          reader.onerror = () => reject(new Error("Failed to read file"))
-          reader.readAsDataURL(file)
-        })
-    )
-
-    Promise.all(readers)
-      .then((results) => {
-        const nextValues = [...values, ...results.map((r) => r.dataUrl)].slice(0, maxFiles)
-        const nextNames = [...localFileNames, ...results.map((r) => r.name)].slice(0, maxFiles)
-        setLocalFileNames(nextNames)
-        onChange(nextValues, nextNames)
-      })
-      .catch(() => {
-        toast.error("Failed to read file. Please try again.")
-      })
-  }
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragging(true)
-  }
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragging(false)
-  }
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragging(false)
-    const files = e.dataTransfer.files
-    if (files?.length) {
-      addFiles(files)
-      const rejected = Array.from(files).some((f) => !f.type.startsWith("image/"))
-      if (rejected) toast.error("Please upload valid image files (JPG, PNG, GIF)")
-    }
-  }
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (files?.length) addFiles(files)
-    // allow re-selecting the same file
-    if (fileInputRef.current) fileInputRef.current.value = ""
-  }
-
-  const handleRemoveAt = (idx: number) => {
-    const nextValues = values.filter((_, i) => i !== idx)
-    const nextNames = localFileNames.filter((_, i) => i !== idx)
-    setLocalFileNames(nextNames)
-    onChange(nextValues, nextNames)
-  }
-
-  const canAddMore = values.length < maxFiles
-
-  return (
-    <div className="space-y-2">
-      <LabelWithTooltip id={id} label={label} tooltip={tooltip} />
-
-      {values.length > 0 && (
-<div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-          {values.map((src, idx) => (
-            <div key={idx} className="relative overflow-hidden rounded-lg border bg-muted/30">
-              <img src={src} alt={`Upload preview ${idx + 1}`} className="h-24 w-full object-cover rounded-lg" />
-              <Button
-                type="button"
-                variant="secondary"
-                size="sm"
-                className="absolute right-1 top-1 h-7 px-2"
-                onClick={() => handleRemoveAt(idx)}
-                aria-label={`Remove uploaded image ${idx + 1}`}
-              >
-                <X className="h-4 w-4" aria-hidden="true" />
-              </Button>
-              <div className="px-2 py-1">
-                <div className="truncate text-xs text-muted-foreground">
-                  {localFileNames[idx] || `Image ${idx + 1}`}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div
-        className={cn(
-          "relative flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 px-6 py-4 text-center transition-colors hover:bg-muted/50",
-          isDragging && "border-primary bg-muted",
-          !canAddMore && "cursor-not-allowed opacity-60 hover:bg-transparent"
-        )}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={() => {
-          if (!canAddMore) return
-          fileInputRef.current?.click()
-        }}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (!canAddMore) return
-          if (e.key === "Enter" || e.key === " ") fileInputRef.current?.click()
-        }}
-        aria-disabled={!canAddMore}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <div className="rounded-full bg-background p-3 shadow-sm">
-            <Upload className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
-          </div>
-          <div className="text-sm font-medium text-muted-foreground">
-            <span className="font-semibold text-foreground">Click to upload</span> or drag and drop
-          </div>
-          <div className="text-xs text-muted-foreground">SVG, PNG, JPG or GIF • up to {maxFiles}</div>
-          {!canAddMore && <div className="text-xs text-muted-foreground">Max {maxFiles} images selected</div>}
-        </div>
-      </div>
-
-      <input
-        id={id}
-        type="file"
-        ref={fileInputRef}
-        className="hidden"
-        accept="image/*"
-        multiple
-        onChange={handleFileChange}
-      />
-    </div>
-  )
-}
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
@@ -211,7 +150,8 @@ export default function Home() {
 
   // Form State
   const [prompt, setPrompt] = useState("")
-  const [images, setImages] = useState<string[]>([])
+  const [fontPreviewOpen, setFontPreviewOpen] = useState(false)
+  const [selectedFont, setSelectedFont] = useState<typeof FONT_GALLERY[0] | null>(null)
 
   const handleGenerate = async () => {
     if (isLoading) return // Prevent double clicks
@@ -226,9 +166,6 @@ export default function Home() {
 
     const formData = new FormData()
     formData.append("prompt", prompt)
-    for (const img of images) {
-      if (img) formData.append("image", img)
-    }
 
     const result = await generateImage(formData)
 
@@ -391,16 +328,57 @@ export default function Home() {
 
             <Separator className="my-2" />
 
-            <div className="space-y-4">
-              <MultiImageUploadInput
-                id="image_url"
-                label="Image (Optional)"
-                tooltip="Input image for image to image mode."
-                values={images}
-                onChange={(vals) => {
-                  setImages(vals)
-                }}
-              />
+            <div className="space-y-6">
+              <div className="flex flex-col gap-2">
+                <LabelWithTooltip
+                  id="fonts"
+                  label="Select a Font Style"
+                  tooltip="Click a font to add it to your prompt."
+                />
+                <div className="relative w-full overflow-x-auto pb-4 scrollbar-hide">
+                  <div className="grid grid-rows-2 grid-flow-col gap-6 min-w-max px-1 pt-2.5">
+                    {FONT_GALLERY.map((font, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex flex-col gap-2 w-72 cursor-pointer group"
+                        onClick={() => {
+                          const newPrompt = prompt.trim() 
+                            ? `${prompt}, ${font.name} font style`
+                            : `${font.name} font style`
+                          setPrompt(newPrompt)
+                          toast.info(`Added ${font.name} style to prompt`)
+                        }}
+                      >
+                        <div className="aspect-video overflow-hidden rounded-xl border-2 border-muted transition-all group-hover:border-primary group-hover:shadow-lg bg-white/5 relative">
+                          <img 
+                            src={`/font-gal/${font.file}`} 
+                            alt={font.name}
+                            className="h-full w-full object-contain p-2"
+                          />
+                          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Button
+                              variant="secondary"
+                              size="icon"
+                              className="h-8 w-8 rounded-full shadow-md"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setLightboxIndex(idx);
+                                setFontPreviewOpen(true);
+                                setSelectedFont(font);
+                              }}
+                            >
+                              <Sparkles className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                        <span className="text-sm font-semibold text-center truncate px-1">
+                          {font.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -476,23 +454,7 @@ export default function Home() {
                     <Share2 className="mr-2 h-4 w-4" />
                     Share
                   </Button>
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="flex-1 h-9 rounded-lg"
-                    onClick={() => {
-                      if (images.length < 4) {
-                        setImages([...images, src])
-                        window.scrollTo({ top: 0, behavior: 'smooth' })
-                        toast.success("Added to workspace for editing")
-                      } else {
-                        toast.error("Workspace is full (max 4 images)")
-                      }
-                    }}
-                  >
-                    <Edit className="mr-2 h-4 w-4" />
-                    Edit
-                  </Button>
+                  {/* Edit feature removed for now as workspace state is not defined */}
                 </div>
               </div>
             ))}
@@ -506,6 +468,40 @@ export default function Home() {
         index={lightboxIndex}
         slides={slides}
       />
+
+      <Dialog open={fontPreviewOpen} onOpenChange={setFontPreviewOpen}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>{selectedFont?.name}</DialogTitle>
+          </DialogHeader>
+          <div className="aspect-video relative rounded-lg overflow-hidden border bg-muted/20">
+            {selectedFont && (
+              <img 
+                src={`/font-gal/${selectedFont.file}`} 
+                alt={selectedFont.name}
+                className="w-full h-full object-contain p-4"
+              />
+            )}
+          </div>
+          <DialogFooter>
+            <Button 
+              className="w-full"
+              onClick={() => {
+                if (selectedFont) {
+                  const newPrompt = prompt.trim() 
+                    ? `${prompt}, ${selectedFont.name} font style`
+                    : `${selectedFont.name} font style`
+                  setPrompt(newPrompt)
+                  toast.info(`Added ${selectedFont.name} style to prompt`)
+                }
+                setFontPreviewOpen(false)
+              }}
+            >
+              Select this font
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
         <DialogContent>
