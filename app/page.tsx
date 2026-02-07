@@ -306,9 +306,9 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-        <Card className="h-full border-2">
-          <CardContent className="space-y-4 pt-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6">
+        <Card className="h-full border-2 rounded-xl sm:rounded-2xl">
+          <CardContent className="space-y-4 p-4 sm:pt-6">
             <div className="space-y-2">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <LabelWithTooltip
@@ -335,12 +335,12 @@ export default function Home() {
                   label="Select a Font Style"
                   tooltip="Click a font to add it to your prompt."
                 />
-                <div className="relative w-full overflow-x-auto pb-4 scrollbar-hide">
-                  <div className="grid grid-rows-2 grid-flow-col gap-6 min-w-max px-1 pt-2.5">
+                <div className="relative w-full -mx-4 px-4 overflow-x-auto pb-4 scrollbar-hide sm:mx-0 sm:px-0">
+                  <div className="grid grid-rows-2 grid-flow-col gap-4 sm:gap-6 min-w-max px-1 pt-2.5">
                     {FONT_GALLERY.map((font, idx) => (
                       <div 
                         key={idx} 
-                        className="flex flex-col gap-2 w-72 cursor-pointer group"
+                        className="flex flex-col gap-2 w-64 sm:w-72 cursor-pointer group"
                         onClick={() => {
                           const newPrompt = prompt.trim() 
                             ? `${prompt}, ${font.name} font style`
@@ -418,11 +418,11 @@ export default function Home() {
             <p className="text-muted-foreground">Creating your masterpiece...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          <div className="grid grid-cols-1 gap-6 w-full">
             {generatedImages.map((src, i) => (
               <div key={i} className="flex flex-col gap-3 group">
                 <div 
-                  className="relative rounded-xl overflow-hidden flex items-center justify-center w-full border border-border/50 hover:border-primary/50 transition-all duration-300 cursor-pointer aspect-square bg-muted/20"
+                  className="relative rounded-xl overflow-hidden flex items-center justify-center w-full border border-border/50 hover:border-primary/50 transition-all duration-300 cursor-pointer aspect-square bg-muted/20 sm:aspect-[4/5]"
                   onClick={() => {
                     setLightboxIndex(i)
                     setLightboxOpen(true)
